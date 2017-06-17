@@ -13,6 +13,7 @@ syntax on
 " settings
 set autoindent      " オートインデント
 set autoread
+set autochdir
 set background=dark
 set backspace=indent,eol,start
 set cindent
