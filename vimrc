@@ -91,3 +91,19 @@ autocmd FileType python setl autoindent
 autocmd FileType python setl smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class
 autocmd FileType python setl expandtab tabstop=4 shiftwidth=4 softtabstop=4
 
+" c_CTRL-X
+"   Input current buffer's directory on command line.
+cnoremap <C-X> <C-R>=<SID>GetBufferDirectory()<CR>
+function! s:GetBufferDirectory()
+  let path = expand('%:p:h')
+  let cwd = getcwd()
+  let dir = '.' 
+  if match(path, escape(cwd, '\')) != 0
+    let dir = pat 
+  elseif strlen(path) > strlen(cwd)
+    let dir = strpart(path, strlen(cwd) + 1)
+  endif
+  return dir . (exists('+shellslash') && !&shellslash ? '\' : '/')
+endfunction'
+
+autocmd BufNewFile *.py 0r $HOME/.vim/template/python.txt
