@@ -1,35 +1,30 @@
-#!/usr/bin/python
 # coding: UTF-8
-
-###########################################################################
-#  (C) MONO WIRELESS INC. - all rights reserved.
-# 利用条件:
-#   - 本ソースコードは、別途ソースコードライセンス記述が無い限りモノワイヤレス株式会社が著作権を
-#     保有しています。
-#   - 本ソースコードは、無保証・無サポートです。本ソースコードや生成物を用いたいかなる損害
-#     についてもモノワイヤレス株式会社は保証致しません。不具合等の報告は歓迎いたします。
-#   - 本ソースコードは、モノワイヤレス株式会社が販売する TWE シリーズと共に実行する前提で公開
-#     しています。
-###########################################################################
-### TWELITE 標準アプリケーションを読み出すスクリプト
-# ※ 本スクリプトは読み出し専用で、読み書き双方を行うには複数スレッドによる処理が必要になります。
-
 from serial import *
 from sys import stdout, stdin, stderr, exit
 
-# パラメータの確認
-#   第一引数: シリアルポート名
-if len(sys.argv) != 2:
-    print "%s {serial port name}" % sys.argv[0]
-    exit(1)
+def main(ser):
+    while True:
+        line = ser.readline().rstrip() # １ライン単位で読み出し、末尾の改行コードを削除（ブロッキング読み出し）
 
-# シリアルポートを開く
-try:
-    ser = Serial(sys.argv[1], 115200)
-    print "open serial port: %s" % sys.argv[1]
-except:
-    print "cannot open serial port: %s" % sys.argv[1]
-    exit(1)
+        if len(line) > 0 and line[0] == ':':
+            print "\n%s" % line
+        else:
+            continue
+
+        try:
+            lst = map(ord, line[1:].decode('hex')) # HEX文字列を文字列にデコード後、各々 ord() したリストに変換
+            csum = sum(lst) & 0xff # チェックサムは 8bit 計算で全部足して　0 なら OK
+            lst.pop() # チェックサムをリストから削除
+            if csum == 0:
+                if lst[1] == 0x81:
+                    printPayload_0x81(lst) # IO関連のデータの受信
+                else:
+                    printPayload(lst) # その他のデータ受信
+            else:
+                print "checksum ng"
+        except:
+            print "  skip" # エラー時
+
 
 # その他のメッセージの表示 (ペイロードをそのまま出力)
 def printPayload(l):
@@ -45,6 +40,7 @@ def printPayload(l):
     print "(hex)"
     return True
         
+
 # 0x81 メッセージの解釈と表示
 def printPayload_0x81(l):
     if len(l) != 23: return False # データサイズのチェック
@@ -93,34 +89,32 @@ def printPayload_0x81(l):
     
     return True
 
+
 def hex2decinmal(hex_):
     return int(hex_)
     
+
 def parse_acceleration(l):
+    return ((e1 * 4 + ef1) * 4) * 8 / 5 - 1600
     
     
 
 # データを１行ずつ解釈する
-while True:
-    line = ser.readline().rstrip() # １ライン単位で読み出し、末尾の改行コードを削除（ブロッキング読み出し）
 
-    if len(line) > 0 and line[0] == ':':
-        print "\n%s" % line
-    else:
-        continue
+if __name__ == '__main__':
+    # パラメータの確認
+    #   第一引数: シリアルポート名
+    if len(sys.argv) != 2:
+        print "%s {serial port name}" % sys.argv[0]
+        exit(1)
 
+    # シリアルポートを開く
     try:
-        lst = map(ord, line[1:].decode('hex')) # HEX文字列を文字列にデコード後、各々 ord() したリストに変換
-        csum = sum(lst) & 0xff # チェックサムは 8bit 計算で全部足して　0 なら OK
-        lst.pop() # チェックサムをリストから削除
-        if csum == 0:
-            if lst[1] == 0x81:
-                printPayload_0x81(lst) # IO関連のデータの受信
-            else:
-                printPayload(lst) # その他のデータ受信
-        else:
-            print "checksum ng"
+        ser = Serial(sys.argv[1], 115200)
+        print('ser: {}'.format(ser))
+        print "open serial port: %s" % sys.argv[1]
     except:
-        print "  skip" # エラー時
+        print "cannot open serial port: %s" % sys.argv[1]
+        exit(1)
 
-
+    main(ser)
