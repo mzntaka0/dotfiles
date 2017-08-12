@@ -15,6 +15,7 @@ def main(ser):
             lst = map(ord, line[1:].decode('hex')) # HEX文字列を文字列にデコード後、各々 ord() したリストに変換
             csum = sum(lst) & 0xff # チェックサムは 8bit 計算で全部足して　0 なら OK
             lst.pop() # チェックサムをリストから削除
+            print('lst: {}'.format(lst))
             if csum == 0:
                 if lst[1] == 0x81:
                     printPayload_0x81(lst) # IO関連のデータの受信

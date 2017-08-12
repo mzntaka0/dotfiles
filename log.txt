@@ -1,0 +1,11 @@
+t: [120, 129, 21, 1, 126, 129, 15, 70, 125, 0, 134, 39, 0, 11, 208, 0, 0, 15, 62, 62, 66, 94, 13]
+command   = 0x81 (data arrival)
+src       = 0x78
+src long  = 0x810f467d
+dst       = 0x00  pktid     = 0x15  prtcl ver = 0x01  LQI       = 126 / -54.40 [dbm]
+time stmp = 536.609 [s]
+relay flg = 0
+volt      = 3024 [mV]
+DI1=0/1  DI2=0/1  DI3=0/1  DI4=0/1
+AD1=0996 AD2=1004 AD3=1056 AD4=1504 [mV]
+
