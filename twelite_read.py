@@ -25,7 +25,7 @@ def main(ser, verbose=False):
                 cnt += 1
                 printPayload_0x81(lst, cnt, verbose) # IO関連のデータの受信
             else:
-                printPayload(lst) # その他のデータ受信
+                printPayload(lst, verbose) # その他のデータ受信
         else:
             print "checksum ng"
 #        except:
@@ -33,22 +33,22 @@ def main(ser, verbose=False):
 
 
 # その他のメッセージの表示 (ペイロードをそのまま出力)
-def printPayload(l):
+def printPayload(l, verbose=False):
     if len(l) < 3: return False # データサイズのチェック
-    
-    print "  command = 0x%02x (other)" % l[1]
-    print "  src     = 0x%02x" % l[0]
-    
-    # ペイロードをそのまま出力する
-    print "  payload =",
-    for c in l[2:]:
-        print "%02x" % c,
-    print "(hex)"
+    if verbose: 
+        print "  command = 0x%02x (other)" % l[1]
+        print "  src     = 0x%02x" % l[0]
+        
+        # ペイロードをそのまま出力する
+        print "  payload =",
+        for c in l[2:]:
+            print "%02x" % c,
+        print "(hex)"
     return True
         
 
 # 0x81 メッセージの解釈と表示
-def printPayload_0x81(l, cnt, verbose):
+def printPayload_0x81(l, cnt=0, verbose=False):
     if len(l) != 23: return False # データサイズのチェック
     
     ladr = l[5] << 24 | l[6] << 16 | l[7] << 8 | l[8]
@@ -108,7 +108,7 @@ def printPayload_0x81(l, cnt, verbose):
 
 def parse_acceleration(l):
     correction_list = parse_correction_values(l)
-    acceleration = lambda e, ef: (((e * 4.0 + ef) * 4.0) * 8.0) / 5.0 - 1600.-0
+    acceleration = lambda e, ef: ((e * 4.0 + ef) * 4.0) * 8.0 / 5.0 - 1600.0
     acceleration_list = []
     for i, ef in zip(range(18, 21), correction_list):
         acceleration_list.append(acceleration(l[i], ef))
