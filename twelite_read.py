@@ -11,20 +11,20 @@ def main(ser):
         else:
             continue
 
-        try:
-            lst = map(ord, line[1:].decode('hex')) # HEX文字列を文字列にデコード後、各々 ord() したリストに変換
-            csum = sum(lst) & 0xff # チェックサムは 8bit 計算で全部足して　0 なら OK
-            lst.pop() # チェックサムをリストから削除
-            print('lst: {}'.format(lst))
-            if csum == 0:
-                if lst[1] == 0x81:
-                    printPayload_0x81(lst) # IO関連のデータの受信
-                else:
-                    printPayload(lst) # その他のデータ受信
+#        try:
+        lst = map(ord, line[1:].decode('hex')) # HEX文字列を文字列にデコード後、各々 ord() したリストに変換
+        csum = sum(lst) & 0xff # チェックサムは 8bit 計算で全部足して　0 なら OK
+        lst.pop() # チェックサムをリストから削除
+        print('lst: {}'.format(lst))
+        if csum == 0:
+            if lst[1] == 0x81:
+                printPayload_0x81(lst) # IO関連のデータの受信
             else:
-                print "checksum ng"
-        except:
-            print "  skip" # エラー時
+                printPayload(lst) # その他のデータ受信
+        else:
+            print "checksum ng"
+#        except:
+#            print "  skip" # エラー時
 
 
 # その他のメッセージの表示 (ペイロードをそのまま出力)
@@ -87,23 +87,34 @@ def printPayload_0x81(l):
             ad[i] = ((av * 4) + (er & 0x3)) * 4
         er >>= 2
     print "  AD1=%04d AD2=%04d AD3=%04d AD4=%04d [mV]" % (ad[1], ad[2], ad[3], ad[4])
+
+    acceleration_list = parse_acceleration(l)
+    print('==acceleration(x, y, z)==')
+    print(', '.join('{:.4f}'.format(v) for v in acceleration_list))
+    
     
     return True
 
 
-def hex2decinmal(hex_):
-    return int(hex_)
-    
-
 def parse_acceleration(l):
-    return ((e1 * 4 + ef1) * 4) * 8 / 5 - 1600
+    acceleration = lambda e: (((e * 4.0 + l[-1]) * 4.0) * 8.0) / 5.0 - 1600.-0
+    acceleration_list = []
+    for i in range(18, 21):
+        print('%02x' % l[i])
+        acceleration_list.append(acceleration(l[i]))
+    print('acceleration_list: {}'.format(acceleration_list))
+    return acceleration_list
+
+
+def hex2binary(hex_):
+    hex_str = str(hex_)
+    decimal_int = int(hex_str, 16)
+    decimal_str = str(decimal_int)
     
     
 
-# データを１行ずつ解釈する
 
 if __name__ == '__main__':
-    # パラメータの確認
     #   第一引数: シリアルポート名
     if len(sys.argv) != 2:
         print "%s {serial port name}" % sys.argv[0]
