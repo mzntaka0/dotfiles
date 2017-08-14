@@ -146,8 +146,7 @@ if __name__ == '__main__':
     # シリアルポートを開く
     try:
         ser = Serial(sys.argv[1], 115200)
-        print('ser: {}'.format(ser))
-        print "open serial port: %s" % sys.argv[1]
+        #print "open serial port: %s" % sys.argv[1]
     except:
         print "cannot open serial port: %s" % sys.argv[1]
         exit(1)
