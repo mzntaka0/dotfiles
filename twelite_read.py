@@ -1,13 +1,16 @@
 # coding: UTF-8
+import datetime
 from serial import *
 from sys import stdout, stdin, stderr, exit
 
-def main(ser):
+def main(ser, verbose=False):
+    cnt = 0
     while True:
         line = ser.readline().rstrip() # １ライン単位で読み出し、末尾の改行コードを削除（ブロッキング読み出し）
 
         if len(line) > 0 and line[0] == ':':
-            print "\n%s" % line
+            if verbose:
+                print "\n%s" % line
         else:
             continue
 
@@ -15,10 +18,12 @@ def main(ser):
         lst = map(ord, line[1:].decode('hex')) # HEX文字列を文字列にデコード後、各々 ord() したリストに変換
         csum = sum(lst) & 0xff # チェックサムは 8bit 計算で全部足して　0 なら OK
         lst.pop() # チェックサムをリストから削除
-        print('lst: {}'.format(lst))
+        if verbose:
+            print('lst: {}'.format(lst))
         if csum == 0:
             if lst[1] == 0x81:
-                printPayload_0x81(lst) # IO関連のデータの受信
+                cnt += 1
+                printPayload_0x81(lst, cnt, verbose) # IO関連のデータの受信
             else:
                 printPayload(lst) # その他のデータ受信
         else:
@@ -43,22 +48,25 @@ def printPayload(l):
         
 
 # 0x81 メッセージの解釈と表示
-def printPayload_0x81(l):
+def printPayload_0x81(l, cnt, verbose):
     if len(l) != 23: return False # データサイズのチェック
     
     ladr = l[5] << 24 | l[6] << 16 | l[7] << 8 | l[8]
-    print "  command   = 0x%02x (data arrival)" % l[1]
-    print "  src       = 0x%02x" % l[0]
-    print "  src long  = 0x%08x" % ladr
-    print "  dst       = 0x%02x" % l[9]
-    print "  pktid     = 0x%02x" % l[2]
-    print "  prtcl ver = 0x%02x" % l[3]
-    print "  LQI       = %d / %.2f [dbm]" % (l[4], (7*l[4]-1970)/20.)
+    if verbose:
+        print "  command   = 0x%02x (data arrival)" % l[1]
+        print "  src       = 0x%02x" % l[0]
+        print "  src long  = 0x%08x" % ladr
+        print "  dst       = 0x%02x" % l[9]
+        print "  pktid     = 0x%02x" % l[2]
+        print "  prtcl ver = 0x%02x" % l[3]
+        print "  LQI       = %d / %.2f [dbm]" % (l[4], (7*l[4]-1970)/20.)
     ts = l[10] << 8 | l[11]
-    print "  time stmp = %.3f [s]" % (ts / 64.0)
-    print "  relay flg = %d" % l[12]
+    if verbose:
+        print "  time stmp = %.3f [s]" % (ts / 64.0)
+        print "  relay flg = %d" % l[12]
     vlt = l[13] << 8 | l[14]
-    print "  volt      = %04d [mV]" % vlt
+    if verbose:
+        print "  volt      = %04d [mV]" % vlt
     
     # DI1..4 のデータ
     dibm = l[16]
@@ -72,7 +80,8 @@ def printPayload_0x81(l):
         dibm_chg >>= 1
         pass
     
-    print "  DI1=%d/%d  DI2=%d/%d  DI3=%d/%d  DI4=%d/%d" % (di[1], di_chg[1], di[2], di_chg[2], di[3], di_chg[3], di[4], di_chg[4])
+    if verbose:
+        print "  DI1=%d/%d  DI2=%d/%d  DI3=%d/%d  DI4=%d/%d" % (di[1], di_chg[1], di[2], di_chg[2], di[3], di_chg[3], di[4], di_chg[4])
     
     # AD1..4 のデータ
     ad = {}
@@ -86,24 +95,38 @@ def printPayload_0x81(l):
             # 補正ビットを含めた計算
             ad[i] = ((av * 4) + (er & 0x3)) * 4
         er >>= 2
-    print "  AD1=%04d AD2=%04d AD3=%04d AD4=%04d [mV]" % (ad[1], ad[2], ad[3], ad[4])
+    if verbose:
+        print "  AD1=%04d AD2=%04d AD3=%04d AD4=%04d [mV]" % (ad[1], ad[2], ad[3], ad[4])
 
     acceleration_list = parse_acceleration(l)
-    print('==acceleration(x, y, z)==')
-    print(', '.join('{:.4f}'.format(v) for v in acceleration_list))
-    
+    todaydetail = datetime.datetime.today()
+
+    print todaydetail, cnt, ', '.join('{:.4f}'.format(v) for v in acceleration_list)
     
     return True
 
 
 def parse_acceleration(l):
-    acceleration = lambda e: (((e * 4.0 + l[-1]) * 4.0) * 8.0) / 5.0 - 1600.-0
+    correction_list = parse_correction_values(l)
+    acceleration = lambda e, ef: (((e * 4.0 + ef) * 4.0) * 8.0) / 5.0 - 1600.-0
     acceleration_list = []
-    for i in range(18, 21):
-        print('%02x' % l[i])
-        acceleration_list.append(acceleration(l[i]))
-    print('acceleration_list: {}'.format(acceleration_list))
+    for i, ef in zip(range(18, 21), correction_list):
+        acceleration_list.append(acceleration(l[i], ef))
     return acceleration_list
+
+
+def parse_correction_values(l):
+    bin_ = bin(l[-1]).split('b')[1]
+    while len(bin_) != 8:
+        bin_ = '0' + bin_
+
+    correction_list = []
+    for i in range(0, 8, 2):
+        correction_list.append(
+                bin_[i:i+2]
+                )
+    correction_list = map(lambda x: int(x, 2), correction_list)
+    return correction_list
 
 
 def hex2binary(hex_):
