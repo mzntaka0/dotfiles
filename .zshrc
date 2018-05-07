@@ -4,7 +4,7 @@
 # General Settings
 # ------------------------------
 export ZSH=/Users/takao/.oh-my-zsh
-export EDITOR=vim        # エディタをvimに設定
+export EDITOR=vim        # set editor to vim
 # export LANG=ja_JP.UTF-8  # 文字コードをUTF-8に設定
 export KCODE=u           # KCODEにUTF-8を設定
 export AUTOFEATURE=true  # autotestでfeatureを動かす
@@ -149,3 +149,43 @@ export PYENV_ROOT="${HOME}/.pyenv"
 export PATH=${PYENV_ROOT}/bin:$PATH
 eval "$(pyenv init -)"
 export PATH=$PATH:$HOME/Work/9DW/est-rouge/
+export LC_ALL=ja_JP.UTF-8
+export LANG='ja_JP.UTF-8'
+export LC_ALL='ja_JP.UTF-8'
+export LC_MESSAGES='ja_JP.UTF-8'
+export DYLD_LIBRARY_PATH=$DYLD_LIBRARY_PATH:$(brew --prefix openssl)/lib
+export DYLD_LIBRARY_PATH=/usr/local/Cellar/openssl/1.0.21/lib
+export DYLD_LIBRARY_PATH=/usr/local/Cellar/openssl/1.0.21/lib
+export DYLD_LIBRARY_PATH=/usr/local/Cellar/openssl/1.0.21/lib
+
+
+# tmuxが起動していない場合にalias設定を行う
+if [ $SHLVL = 1 ]; then
+    # tmuxにセッションがなかったら新規セッションを立ち上げた際に分割処理設定を読み込む
+    alias tmux="tmux -2 attach || tmux -2 new-session \; source-file ~/.tmux/new-session"
+fi
+
+setopt nonomatch
+alias ll='ls -l'
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/mzntaka0/Work/9DW/6CNS/project/6CNS/google-cloud-sdk/path.zsh.inc' ]; then source '/Users/mzntaka0/Work/9DW/6CNS/project/6CNS/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/mzntaka0/Work/9DW/6CNS/project/6CNS/google-cloud-sdk/completion.zsh.inc' ]; then source '/Users/mzntaka0/Work/9DW/6CNS/project/6CNS/google-cloud-sdk/completion.zsh.inc'; fi
+
+alias vimrc='vi ~/.vimrc'
+alias zshrc='vi ~/.zshrc'
+
+export CC="/usr/bin/gcc"
+export CXX="/usr/bin/g++"
+
+function pecokill() {
+  for pid in `ps aux | peco | awk '{ print $2 }'`
+  do
+    kill $pid
+    echo "Killed ${pid}"
+  done
+}
+alias pecokill="pecokill"
+export PATH="/usr/local/opt/sqlite/bin:$PATH"

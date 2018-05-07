@@ -129,13 +129,6 @@ def parse_correction_values(l):
     return correction_list
 
 
-def hex2binary(hex_):
-    hex_str = str(hex_)
-    decimal_int = int(hex_str, 16)
-    decimal_str = str(decimal_int)
-    
-    
-
 
 if __name__ == '__main__':
     #   第一引数: シリアルポート名
