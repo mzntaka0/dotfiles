@@ -61,6 +61,11 @@ set wrapscan        " 検索時に最後に達したら最初に戻る
 set splitbelow
 set splitright
 
+" for markdown
+hi link htmlItalic LineNr
+hi link htmlBold WarningMsg
+hi link htmlBoldItalic ErrorMsg
+
 let g:netrw_liststyle=3
 let g:netrw_altv = 1
 let g:netrw_alto = 1
@@ -102,6 +107,7 @@ autocmd FileType python let g:pydiction_location = '~/.vim/pydiction/complete-di
 autocmd FileType python setl autoindent
 autocmd FileType python setl smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class
 autocmd FileType python setl expandtab tabstop=4 shiftwidth=4 softtabstop=4
+autocmd BufNewFile,BufRead *.py nnoremap <C-p> :!python %<CR>
 
 if version < 600
   syntax clear
@@ -149,44 +155,9 @@ if executable('clang-format')
 endif
 
 
-""dein Scripts-----------------------------
-if &compatible
-  set nocompatible               " Be iMproved
-endif
+""my functions
 
-let s:dein_path = expand('~/.vim/dein')
-let s:dein_repo_path = s:dein_path . '/repos/github.com/Shougo/dein.vim'
-
-" if don't have dein.vim, clone from github
-if &runtimepath !~# '/dein.vim'
-  if !isdirectory(s:dein_repo_path)
-    execute '!git clone https://github.com/Shougo/dein.vim' s:dein_repo_path
-  endif
-  execute 'set runtimepath^=' . fnamemodify(s:dein_repo_path, ':p')
-endif
-
-if dein#load_state(s:dein_path)
-  call dein#begin(s:dein_path)
-
-  let g:config_dir  = expand('~/.vim/userconfig')
-  let s:toml        = g:config_dir . '/plugins.toml'
-  let s:lazy_toml   = g:config_dir . '/plugins_lazy.toml'
-
-  " read TOML
-  call dein#load_toml(s:toml,      {'lazy': 0})
-  call dein#load_toml(s:lazy_toml, {'lazy': 1})
-
-  call dein#end()
-  call dein#save_state()
-endif
-
-
-" Required:
-filetype plugin indent on
-syntax enable
-
-" If you want to install not installed plugins on startup.
-if dein#check_install()
-  call dein#install()
-endif
-"End dein Scripts-------------------------
+command! -complete=shellcmd -nargs=? Md call Md(<f-args>)
+function! Md(...)
+    !grip --export ImplementedList.md -|w3m -T text/html
+endfunction
