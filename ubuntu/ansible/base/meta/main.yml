@@ -1,0 +1,11 @@
+---
+galaxy_info:
+  author: Takao Mizuno
+  description: Install base tools for ubuntu
+  license: BSD
+  min_ansible_version: 2.5
+  platforms:
+  - name: Ubuntu
+  categories:
+  - ubuntu
+dependencies: []
