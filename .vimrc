@@ -11,7 +11,7 @@ colorscheme desert
 syntax on
 
 " settings
-set autoindent      " オートインデント
+set autoindent      " auto indent
 set autoread
 set autochdir
 set background=dark
@@ -21,43 +21,43 @@ set clipboard&
 set clipboard^=unnamedplus
 set clipboard=unnamed,autoselect
 set encoding=utf-8
-set expandtab       " タブをスペース
+set expandtab       " tab to space
 set enc=utf-8
 "set fileencodings=sjis,utf-8,ucs-bomiso-2022-jp,euc-jp,cp932,utf-16le,utf-16,default,latin1,
 set fileencoding=UTF-8
 set fileformats=unix,dos,mac
 set hidden
-set hlsearch        " 検索ハイライトをEscでクリア
-set ignorecase      " 検索文字列文字列が小文字の場合は大文字小文字区別なし
-set incsearch       " インクリメンタルサーチ
-set infercase           " 補完時に大文字小文字を区別しない
-set matchpairs& matchpairs+=<:> " 対応括弧に'<'と'>'のペアを追加
+set hlsearch        " clear highlight with esc
+set ignorecase      " search both lower and upper when search lowercase
+set incsearch       " incremental search
+set infercase           " complement both lower and upper
+set matchpairs& matchpairs+=<:> " add <> to brackets
 set nocompatible
-set noincsearch     " 検索文字列入力時に順次文字列にヒットさせない
+set noincsearch
 set nostartofline
-set noswapfile      " swapファイルを作成しない
+set noswapfile      " will not make swap
 set novisualbell
 set nowrapscan
 set nrformats=
-set number          " 行番号表示
+set number          " show raw number
 set ruler
 set shiftround
-set shiftwidth=4    " タブ幅(自動挿入)
-set showcmd         " 入力中コマンド表示
-set showmatch       " 入力時対応括弧強調
-set smartcase       " 検索文字列に大文字が含まれる場合は大文字小文字区別する
-set smartindent     " オートインデント
+set shiftwidth=4    " width of tab
+set showcmd         " show command when typing
+set showmatch       " emphesize pair bracket
+set smartcase       " distinguish lower and upper when search with starting uppercase
+set smartindent     " autoindent
 set termencoding=UTF-8
-set laststatus=2    " ステータスバーを表示
+set laststatus=2    " show statusbar
 set t_Co=256
-set tabstop=3       " タブ幅
+set tabstop=3       " width of tab 
 set title
 set ttyfast
 set vb t_vb=
 set wildmenu
 set wildmode=longest:full,full
 set wildignore=*.o,*.obj,*.pyc,*.so,*.dll
-set wrapscan        " 検索時に最後に達したら最初に戻る
+set wrapscan        " research when over the end of search result
 set splitbelow
 set splitright
 
@@ -85,7 +85,7 @@ inoremap "<Enter> ""<Left>
 inoremap <C-l> <Right>
 
 
-" :e などでファイルを開く際にフォルダが存在しない場合は自動作成
+" make directory when not exists directory with :e
 function! s:mkdir(dir, force)
   if !isdirectory(a:dir) && (a:force ||
         \ input(printf('"%s" does not exist. Create? [y/N]', a:dir)) =~? '^y\%[es]$')
