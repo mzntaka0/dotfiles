@@ -6,10 +6,10 @@ galaxy_info:
 
   # If this a Container Enabled role, provide the minimum Ansible Container version.
   # min_ansible_container_version:
-   platforms:
-   - name: Ubuntu
-     versions:
-     - all
+  platforms:
+  - name: Ubuntu
+    versions:
+    - all
 
   galaxy_tags: []
     # List tags for your role here, one per line. A tag is a keyword that describes

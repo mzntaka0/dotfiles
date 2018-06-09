@@ -1,7 +1,0 @@
----
-- name: install editors
-  sudo: yes
-  action: apt pkg="{{item}}" state=present update_cache=no
-  with_items:
-      - "vim"
-  tags: editors
