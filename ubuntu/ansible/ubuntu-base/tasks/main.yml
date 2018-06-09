@@ -21,6 +21,7 @@
       - "python-pexpect"
       - "libgconf2-4"
       - "gnome-panel"
+      - "curl"
 
 - name: download linux_deb for hyper
   shell: sudo wget https://hyper-updates.now.sh/download/linux_deb_amd64
