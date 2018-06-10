@@ -1,4 +1,14 @@
 ---
+- name: get user name
+  shell: who|cut -d ' ' -f 1
+  register: whoami
+
+- name: install basic tools
+  sudo: yes
+  action: apt pkg="{{item}}" state=present update_cache=no
+  with_items:
+      - "curl"
+
 - name: install editors
   sudo: yes
   action: apt pkg="{{item}}" state=present update_cache=no
@@ -21,9 +31,8 @@
       - "python-pexpect"
       - "libgconf2-4"
       - "gnome-panel"
-      - "curl"
 
-- name: download linux_deb for hyper
+- name: download linux_deb_amd64 for hyper
   shell: sudo wget https://hyper-updates.now.sh/download/linux_deb_amd64
 
 - name: install hyper with linux_deb_amd64
@@ -33,3 +42,9 @@
       "Do you want to install the software package\\? \\[y/N\\]" : "y"
   
 - shell: sudo rm linux_deb_amd64
+
+- name: make symlink of .vimrc to home directory
+  file:
+    src: /home/{{whoami.stdout}}/dotfiles/.vimrc
+    dest: /home/{{whoami.stdout}}/.vimrc
+    state: link
