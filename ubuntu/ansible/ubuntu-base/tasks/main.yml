@@ -1,4 +1,5 @@
 ---
+# FIXME: when login user is several, it may cause some bug.
 - name: get user name
   shell: who|cut -d ' ' -f 1
   register: whoami
@@ -48,3 +49,12 @@
     src: /home/{{whoami.stdout}}/dotfiles/.vimrc
     dest: /home/{{whoami.stdout}}/.vimrc
     state: link
+
+- name: install other extensions
+  sudo: yes
+  action: apt pkg="{{item}}" state=present update_cache=no
+  with_items:
+    - "bluez"
+  tags:
+    - others
+    - extensions

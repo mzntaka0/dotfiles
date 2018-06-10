@@ -4,3 +4,4 @@
   sudo: true
   roles:
       - {role: ubuntu-base}
+      - {role: docker.ubuntu}
