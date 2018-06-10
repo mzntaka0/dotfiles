@@ -46,6 +46,7 @@ coming soon...
 # TODO
 ## ubuntu
 - change the way to get user name to decide home directory path
+- write fish to shell list automatically
 
 ## macOS
 coming soon...
