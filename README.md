@@ -22,12 +22,23 @@ coming soon...
 
 # Features
 ## ubuntu
+### shell script
 - set caps lock to ctrl key
 - make japanese available
-- install ansible
 - run ansible roles
-- install fish
+#### install list
+- ansible
 
+### ansible
+- install basictools
+- make symlink of .vimrc to ~/.vimrc from ~/dotfiles/.vimrc
+#### install list
+- vim-gtk
+- fish
+- gdebi
+- python-pexpect
+- libgconf2-4
+- gnome-panel
 
 ## macOS
 coming soon...
@@ -35,6 +46,7 @@ coming soon...
 # TODO
 ## ubuntu
 - change the way to get user name to decide home directory path
+- write fish to shell list automatically
 
 ## macOS
 coming soon...
