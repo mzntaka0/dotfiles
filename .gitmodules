@@ -1,0 +1,3 @@
+[submodule "ubuntu/ansible/docker.ubuntu"]
+	path = ubuntu/ansible/docker.ubuntu
+	url = https://github.com/angstwad/docker.ubuntu.git

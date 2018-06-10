@@ -36,9 +36,4 @@ sudo apt-get update
 sudo apt-get install fish
 chsh -s /usr/bin/fish
 curl -Lo ~/.config/fish/functions/fisher.fish --create-dirs https://git.io/fisher
-echo 'fisher oh-my-fish/plugin-peco'|fish
 echo 'fisher edc/bass'|fish 
-echo 'function fish_user_key_bindings
-  bind \\cr "peco_select_history (commandline -b)"
-end' >> ~/.config/fish/config.fish
-exec $SHELL -l
