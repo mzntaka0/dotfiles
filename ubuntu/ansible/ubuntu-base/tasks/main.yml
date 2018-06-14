@@ -3,6 +3,10 @@
 - name: get user name
   shell: who|cut -d ' ' -f 1
   register: whoami
+  tags:
+    - vimrc
+    - others
+    - work
 
 - name: install basic tools
   sudo: yes
@@ -49,6 +53,16 @@
     src: /home/{{whoami.stdout}}/dotfiles/.vimrc
     dest: /home/{{whoami.stdout}}/.vimrc
     state: link
+  tags:
+    - vimrc
+
+- name: make symlink of .zshrc to home directory
+  file:
+    src: /home/{{whoami.stdout}}/dotfiles/.zshrc
+    dest: /home/{{whoami.stdout}}/.zshrc
+    state: link
+  tags:
+    - zshrc
 
 - name: install other extensions
   sudo: yes
@@ -58,3 +72,8 @@
   tags:
     - others
     - extensions
+
+- name: making Work directory at home directory
+  shell: mkdir /home/{{whoami.stdout}}/Work
+  tags:
+    - work

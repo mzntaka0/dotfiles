@@ -189,3 +189,6 @@ function pecokill() {
 }
 alias pecokill="pecokill"
 export PATH="/usr/local/opt/sqlite/bin:$PATH"
+
+export PATH="/usr/local/cuda-8.0/bin:${PATH}"
+export LD_LIBRARY_PATH="/usr/local/cuda-8.0/lib32:${LD_LIBRARY_PATH}"
