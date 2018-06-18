@@ -1,0 +1,6 @@
+[submodule "ubuntu/ansible/docker.ubuntu"]
+	path = ubuntu/ansible/docker.ubuntu
+	url = https://github.com/angstwad/docker.ubuntu.git
+[submodule "ubuntu/ansible/nvidia-docker-ubuntu"]
+	path = ubuntu/ansible/nvidia-docker-ubuntu
+	url = https://github.com/mike-wendt/nvidia-docker-ubuntu.git
