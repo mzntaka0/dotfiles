@@ -135,11 +135,7 @@ export PYTHONPATH=$PYTHONPATH:/User/takao/.pyenv/versions/anaconda2-4.3.0/lib/py
 export PYENV_ROOT="${HOME}/.pyenv"
 export PATH=${PYENV_ROOT}/bin:$PATH
 eval "$(pyenv init -)"
-export PATH=$PATH:$HOME/Work/9DW/est-rouge/
-<<<<<<< HEAD
-=======
 export LC_ALL=ja_JP.UTF-8
->>>>>>> c7b8ba386b7b6686a36b8797113c47021934860a
 #export DYLD_LIBRARY_PATH=$DYLD_LIBRARY_PATH:$(brew --prefix openssl)/lib
 export DYLD_LIBRARY_PATH=/usr/local/Cellar/openssl/1.0.21/lib
 export DYLD_LIBRARY_PATH=/usr/local/Cellar/openssl/1.0.21/lib
