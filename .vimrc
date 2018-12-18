@@ -74,6 +74,15 @@ nmap <silent> <Esc><Esc> :nohlsearch<CR>
 
 noremap PP "0p
 noremap x "_x
+nnoremap あ a
+nnoremap い i
+nnoremap う u
+nnoremap お o
+nnoremap っd dd
+nnoremap っy yy
+nnoremap し” ci"
+nnoremap し’ ci'
+
 
 nnoremap O :<C-u>call append(expand('.'), '')<Cr>j
 

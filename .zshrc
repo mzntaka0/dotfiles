@@ -118,21 +118,6 @@ function cd() {
 }
 
 
-function peco-select-history() {
-   local tac
-    if which tac > /dev/null; then
-        tac="tac"
-    else
-        tac="tail -r"
-    fi
-    BUFFER=$(\history -n 1 | \
-        eval $tac | \
-        peco --query "$LBUFFER")
-    CURSOR=$#BUFFER
-    zle clear-screen
-}
-zle -N peco-select-history
-bindkey '^r' peco-select-history
 
 
 #--------------------------------
@@ -151,6 +136,10 @@ export PYENV_ROOT="${HOME}/.pyenv"
 export PATH=${PYENV_ROOT}/bin:$PATH
 eval "$(pyenv init -)"
 export PATH=$PATH:$HOME/Work/9DW/est-rouge/
+<<<<<<< HEAD
+=======
+export LC_ALL=ja_JP.UTF-8
+>>>>>>> c7b8ba386b7b6686a36b8797113c47021934860a
 #export DYLD_LIBRARY_PATH=$DYLD_LIBRARY_PATH:$(brew --prefix openssl)/lib
 export DYLD_LIBRARY_PATH=/usr/local/Cellar/openssl/1.0.21/lib
 export DYLD_LIBRARY_PATH=/usr/local/Cellar/openssl/1.0.21/lib
@@ -178,14 +167,6 @@ alias zshrc='vi ~/.zshrc'
 export CC="/usr/bin/gcc"
 export CXX="/usr/bin/g++"
 
-function pecokill() {
-  for pid in `ps aux | peco | awk '{ print $2 }'`
-  do
-    kill $pid
-    echo "Killed ${pid}"
-  done
-}
-alias pecokill="pecokill"
 export PATH="/usr/local/opt/sqlite/bin:$PATH"
 
 export PATH="/usr/local/cuda-9.0/bin:${PATH}"
