@@ -1,6 +1,6 @@
 # install docker-ce
 apt-get update
-apt-get install \
+apt-get install -y \
     apt-transport-https \
     ca-certificates \
     curl \
@@ -12,7 +12,7 @@ add-apt-repository \
     $(lsb_release -cs) \
     stable"
 apt-get update
-apt-get install docker-ce
+apt-get install -y docker-ce
 
 # If you have nvidia-docker 1.0 installed: we need to remove it and all existing GPU containers
 docker volume ls -q -f driver=nvidia-docker | xargs -r -I{} -n1 docker ps -q -a -f volume={} | xargs -r docker

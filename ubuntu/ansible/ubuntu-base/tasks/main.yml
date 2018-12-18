@@ -64,6 +64,14 @@
   tags:
     - zshrc
 
+- name: make symlink of .zshrc to home directory
+  file:
+    src: /home/{{whoami.stdout}}/dotfiles/.hyper.js
+    dest: /home/{{whoami.stdout}}/.hyper.js
+    state: link
+  tags:
+    - hyper
+
 - name: install other extensions
   sudo: yes
   action: apt pkg="{{item}}" state=present update_cache=no
