@@ -5,4 +5,3 @@
   roles:
       - {role: ubuntu-base}
       - {role: docker.ubuntu}
-      - {role: nvidia-docker-ubuntu}

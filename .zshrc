@@ -6,6 +6,7 @@
 export ZSH=/Users/takao/.oh-my-zsh
 export EDITOR=vim        # set editor to vim
 # export LANG=ja_JP.UTF-8  # 文字コードをUTF-8に設定
+export LANG=en_US
 export KCODE=u           # KCODEにUTF-8を設定
 export AUTOFEATURE=true  # autotestでfeatureを動かす
 bindkey -v              # キーバインドをviモードに設定
@@ -142,18 +143,15 @@ alias la='ls -a'
 alias activate="source ~/.pyenv//versions/anaconda3-4.0.0/bin/activate"
 alias deactivate="source ~/.pyenv//versions/anaconda3-4.0.0/bin/deactivate"
 alias py352con="py352"
-alias vi='vim'
+alias vi='sudo vim'
+alias mkdir='sudo mkdir'
 
 export PYTHONPATH=$PYTHONPATH:/User/takao/.pyenv/versions/anaconda2-4.3.0/lib/python2.7/site-packages
 export PYENV_ROOT="${HOME}/.pyenv"
 export PATH=${PYENV_ROOT}/bin:$PATH
 eval "$(pyenv init -)"
 export PATH=$PATH:$HOME/Work/9DW/est-rouge/
-export LC_ALL=ja_JP.UTF-8
-export LANG='ja_JP.UTF-8'
-export LC_ALL='ja_JP.UTF-8'
-export LC_MESSAGES='ja_JP.UTF-8'
-export DYLD_LIBRARY_PATH=$DYLD_LIBRARY_PATH:$(brew --prefix openssl)/lib
+#export DYLD_LIBRARY_PATH=$DYLD_LIBRARY_PATH:$(brew --prefix openssl)/lib
 export DYLD_LIBRARY_PATH=/usr/local/Cellar/openssl/1.0.21/lib
 export DYLD_LIBRARY_PATH=/usr/local/Cellar/openssl/1.0.21/lib
 export DYLD_LIBRARY_PATH=/usr/local/Cellar/openssl/1.0.21/lib
@@ -190,5 +188,7 @@ function pecokill() {
 alias pecokill="pecokill"
 export PATH="/usr/local/opt/sqlite/bin:$PATH"
 
-export PATH="/usr/local/cuda-8.0/bin:${PATH}"
-export LD_LIBRARY_PATH="/usr/local/cuda-8.0/lib32:${LD_LIBRARY_PATH}"
+export PATH="/usr/local/cuda-9.0/bin:${PATH}"
+export LD_LIBRARY_PATH="/usr/local/cuda-9.0/lib64:${LD_LIBRARY_PATH}"
+export LANG=en_US.utf-8
+alias act="source $PYENV_ROOT/versions/anaconda3-5.2.0/bin/activate"

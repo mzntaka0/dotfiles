@@ -124,7 +124,6 @@ let b:current_after_syntax = 'python'
 let &cpo = s:cpo_save
 unlet s:cpo_save
 
-" c_CTRL-X
 "   Input current buffer's directory on command line.
 cnoremap <C-X> <C-R>=<SID>GetBufferDirectory()<CR>
 function! s:GetBufferDirectory()
@@ -154,10 +153,4 @@ if executable('clang-format')
   augroup END
 endif
 
-
-""my functions
-
-command! -complete=shellcmd -nargs=? Md call Md(<f-args>)
-function! Md(...)
-    !grip --export ImplementedList.md -|w3m -T text/html
-endfunction
+autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
