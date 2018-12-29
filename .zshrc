@@ -168,3 +168,12 @@ export PATH="/usr/local/opt/sqlite/bin:$PATH"
 export PATH="/usr/local/cuda-8.0/bin:${PATH}"
 export LD_LIBRARY_PATH="/usr/local/cuda-8.0/lib32:${LD_LIBRARY_PATH}"
 export LANG=en_US.UTF-8
+
+export PATH="/usr/local/cuda/bin:$PATH"
+export LD_LIBRARY_PATH="/usr/local/cuda/lib64:$LD_LIBRARY_PATH"
+export PATH="/usr/local/cuda/bin:$PATH"
+export LD_LIBRARY_PATH="/usr/local/cuda/lib64:$LD_LIBRARY_PATH"
+export PKG_CONFIG_PATH=/usr/local/opencv320/lib/pkgconfig:$PKG_CONFIG_PATH
+export LD_LIBRARY_PATH=/usr/local/opencv320/lib:$LD_LIBRARY_PATH
+export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig:$PKG_CONFIG_PATH
+export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
