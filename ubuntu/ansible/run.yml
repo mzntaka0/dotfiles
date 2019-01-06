@@ -3,6 +3,5 @@
   connection: local
   sudo: true
   roles:
-      # - {role: ubuntu-base}
+      - {role: ubuntu-base}
       - {role: docker.ubuntu}
-      - {role: nvidia-docker-ubuntu}
