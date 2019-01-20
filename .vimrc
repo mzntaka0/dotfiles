@@ -84,7 +84,6 @@ Plug 'davidhalter/jedi-vim'
 Plug 'raimon49/requirements.txt.vim', {'for': 'requirements'}
 Plug 'andviro/flake8-vim'
 Plug 'hynek/vim-python-pep8-indent'
-Plug 'hachibeeDI/python_hl_lvar.vim'
 
 
 "*****************************************************************************
