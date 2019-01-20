@@ -17,9 +17,9 @@ echo '# install ansible'
 echo '#############################'
 apt-get update
 apt-get install -y software-properties-common
-apt-add-repository --sk ppa:ansible/ansible
+apt-add-repository ppa:ansible/ansible
 apt-get update
-apt-get install -y --sk ansible
+apt-get install -y ansible
 
 echo '#############################'
 echo '# run ansible roles'
