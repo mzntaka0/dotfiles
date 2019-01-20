@@ -147,7 +147,9 @@ if [ $SHLVL = 1 ]; then
     # tmuxにセッションがなかったら新規セッションを立ち上げた際に分割処理設定を読み込む
     alias tmux="tmux -2 attach || tmux -2 new-session \; source-file ~/.tmux/new-session"
 fi
-
+if [ $SHLVL = 1 ]; then
+    tmux
+fi
 setopt nonomatch
 alias ll='ls -l'
 
@@ -169,3 +171,4 @@ export PATH="/usr/local/cuda-9.0/bin:${PATH}"
 export LD_LIBRARY_PATH="/usr/local/cuda-9.0/lib64:${LD_LIBRARY_PATH}"
 export LANG=en_US.utf-8
 alias act="source $PYENV_ROOT/versions/anaconda3-5.2.0/bin/activate"
+

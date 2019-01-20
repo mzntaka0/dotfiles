@@ -13,6 +13,7 @@
   action: apt pkg="{{item}}" state=present update_cache=no
   with_items:
       - "curl"
+      - "tmux"
 
 - name: install editors
   sudo: yes
@@ -71,6 +72,22 @@
     state: link
   tags:
     - hyper
+
+- name: make symlink of .tmux.conf to home directory
+  file:
+    src: /home/{{whoami.stdout}}/dotfiles/.tmux.conf
+    dest: /home/{{whoami.stdout}}/.tmux.conf
+    state: link
+  tags:
+    - tmux
+
+- name: make symlink of .tmux to home directory
+  file:
+    src: /home/{{whoami.stdout}}/dotfiles/.tmux
+    dest: /home/{{whoami.stdout}}/.tmux
+    state: link
+  tags:
+    - tmux
 
 - name: install other extensions
   sudo: yes
