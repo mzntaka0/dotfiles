@@ -57,6 +57,14 @@
   tags:
     - vimrc
 
+- name: make symlink of .vimrc.local to home directory
+  file:
+    src: /home/{{whoami.stdout}}/dotfiles/.vimrc.local
+    dest: /home/{{whoami.stdout}}/.vimrc.local
+    state: link
+  tags:
+    - vimrc
+
 - name: make symlink of .zshrc to home directory
   file:
     src: /home/{{whoami.stdout}}/dotfiles/.zshrc
