@@ -1,4 +1,4 @@
-" release autogroup in MyAutoCmd
+" releash autogroup in MyAutoCmd
 augroup MyAutoCmd
     autocmd!
 augroup END

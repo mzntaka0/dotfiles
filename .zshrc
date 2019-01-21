@@ -169,3 +169,4 @@ export PATH="/usr/local/cuda-9.0/bin:${PATH}"
 export LD_LIBRARY_PATH="/usr/local/cuda-9.0/lib64:${LD_LIBRARY_PATH}"
 export LANG=en_US.utf-8
 alias act="source $PYENV_ROOT/versions/anaconda3-5.2.0/bin/activate"
+alias ipm="sudo /usr/lib/inkdrop/resources/app/ipm/bin/ipm"
