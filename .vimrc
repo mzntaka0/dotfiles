@@ -83,7 +83,7 @@ Plug 'tomasr/molokai'
 Plug 'davidhalter/jedi-vim'
 Plug 'raimon49/requirements.txt.vim', {'for': 'requirements'}
 Plug 'andviro/flake8-vim'
-Plug 'hynek/vim-python-pep8-indent'
+"Plug 'hynek/vim-python-pep8-indent'
 
 
 "*****************************************************************************
@@ -98,6 +98,8 @@ call plug#end()
 
 " Required:
 filetype plugin indent on
+filetype plugin on
+filetype indent on
 
 
 "*****************************************************************************
@@ -112,6 +114,7 @@ set binary
 set ttyfast
 
 set autochdir
+set colorcolumn=79
 
 "" Fix backspace indent
 set backspace=indent,eol,start
@@ -156,6 +159,7 @@ let g:session_command_aliases = 1
 "" Visual Settings
 "*****************************************************************************
 syntax on
+syntax enable
 set ruler
 set number
 

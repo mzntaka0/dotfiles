@@ -3,7 +3,7 @@ augroup MyAutoCmd
     autocmd!
 augroup END
 
-syntax enable 
+syntax enable
 filetype plugin on
 filetype indent on
 filetype plugin indent on
@@ -50,7 +50,7 @@ set smartindent     " autoindent
 set termencoding=UTF-8
 set laststatus=2    " show statusbar
 set t_Co=256
-set tabstop=3       " width of tab 
+set tabstop=3       " width of tab
 set title
 set ttyfast
 set vb t_vb=
@@ -60,6 +60,8 @@ set wildignore=*.o,*.obj,*.pyc,*.so,*.dll
 set wrapscan        " research when over the end of search result
 set splitbelow
 set splitright
+highlight ColorColumn ctermbg=234
+highlight ExtraWhitespace ctermbg=234
 
 " for markdown
 hi link htmlItalic LineNr
@@ -138,9 +140,9 @@ cnoremap <C-X> <C-R>=<SID>GetBufferDirectory()<CR>
 function! s:GetBufferDirectory()
   let path = expand('%:p:h')
   let cwd = getcwd()
-  let dir = '.' 
+  let dir = '.'
   if match(path, escape(cwd, '\')) != 0
-    let dir = pat 
+    let dir = pat
   elseif strlen(path) > strlen(cwd)
     let dir = strpart(path, strlen(cwd) + 1)
   endif
