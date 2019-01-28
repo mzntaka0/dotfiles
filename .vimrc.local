@@ -72,6 +72,9 @@ let g:netrw_liststyle=3
 let g:netrw_altv = 1
 let g:netrw_alto = 1
 
+
+let g:pep8_ignore="E501,W601,E265"
+
 nmap <silent> <Esc><Esc> :nohlsearch<CR>
 
 noremap PP "0p
@@ -119,6 +122,7 @@ autocmd FileType python setl autoindent
 autocmd FileType python setl smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class
 autocmd FileType python setl expandtab tabstop=4 shiftwidth=4 softtabstop=4
 autocmd BufNewFile,BufRead *.py nnoremap <C-p> :!python %<CR>
+autocmd BufNewFile,BufRead *.md nnoremap <C-p> :w!<CR>:w!/home/user/tmp/vim-markdown.md<CR>:!pandoc -s -f markdown -t html -o /home/user/tmp/vim-markdown.html /home/user/tmp/vim-markdown.md<CR>:!dillo /home/user/tmp/vim-markdown.html > /dev/null 2> /dev/null&<CR><CR>
 
 if version < 600
   syntax clear
