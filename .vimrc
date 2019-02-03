@@ -37,7 +37,7 @@ Plug 'vim-airline/vim-airline-themes'
 "Plug 'airblade/vim-gitgutter'
 Plug 'vim-scripts/grep.vim'
 "Plug 'vim-scripts/CSApprox'
-Plug 'bronson/vim-trailing-whitespace'
+Plug 'ntpeters/vim-better-whitespace'
 Plug 'Raimondi/delimitMate'
 Plug 'majutsushi/tagbar'
 "Plug 'scrooloose/syntastic'
@@ -88,7 +88,7 @@ Plug 'andviro/flake8-vim'
 let g:PyFlakeDisabledMessages = 'E501,W601,E265,E123,F841'
 let g:PyFlakeCWindow = 0 
 let g:PyFlakeMaxLineLength = 5
-let g:PyFlakeCheckers = 'pep8,mccabe,flake8'
+let g:PyFlakeCheckers = 'pep8,mccabe,flake8,frosted'
 let g:PyFlakeOnWrite = 1
 
 
@@ -541,3 +541,5 @@ for k in split("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_",'\zs')
   exec "imap <expr> " . k . " pumvisible() ? '" . k . "' : '" . k . "\<C-X>\<C-P>\<C-N>'"
 endfor
 
+highlight LeadingWhitespaces ctermbg=234
+highlight TrailingWhitespaces ctermbg=234

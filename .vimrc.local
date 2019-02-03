@@ -62,6 +62,12 @@ set splitbelow
 set splitright
 highlight ColorColumn ctermbg=234
 highlight ExtraWhitespace ctermbg=234
+highlight LeadingWhitespace ctermbg=234 ctermfg=234
+highlight TrailingWhitespace ctermbg=234 ctermfg=2234
+highlight NextTrailingWhitespace ctermbg=234 ctermfg=2234
+highlight PrevTrailingWhitespace ctermbg=234 ctermfg=2234
+highlight SpecialKey ctermbg=234 ctermfg=234
+
 
 " for markdown
 hi link htmlItalic LineNr
