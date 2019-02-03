@@ -40,10 +40,11 @@ Plug 'vim-scripts/grep.vim'
 Plug 'bronson/vim-trailing-whitespace'
 Plug 'Raimondi/delimitMate'
 Plug 'majutsushi/tagbar'
-Plug 'scrooloose/syntastic'
+"Plug 'scrooloose/syntastic'
 "Plug 'Yggdroot/indentLine'
 Plug 'avelino/vim-bootstrap-updater'
 Plug 'sheerun/vim-polyglot'
+Plug 'suan/vim-instant-markdown'
 if isdirectory('/usr/local/opt/fzf')
   Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
 else
@@ -83,7 +84,13 @@ Plug 'tomasr/molokai'
 Plug 'davidhalter/jedi-vim'
 Plug 'raimon49/requirements.txt.vim', {'for': 'requirements'}
 Plug 'andviro/flake8-vim'
-Plug 'hynek/vim-python-pep8-indent'
+
+let g:PyFlakeDisabledMessages = 'E501,W601,E265,E123,F841'
+let g:PyFlakeCWindow = 0 
+let g:PyFlakeMaxLineLength = 5
+let g:PyFlakeCheckers = 'pep8,mccabe,flake8'
+let g:PyFlakeOnWrite = 1
+
 
 let g:pep8_ignore="E501,W601,E265"
 
