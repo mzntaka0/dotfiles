@@ -178,4 +178,3 @@ md () {
   pandoc $1 | lynx -stdin
 }
 
-source ~/catkin_ws/devel/setup.zsh

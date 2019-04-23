@@ -116,8 +116,8 @@ autocmd MyAutoCmd BufWritePre * call s:mkdir(expand('<afile>:p:h'), v:cmdbang)
 
 
 set completeopt=menuone
-for k in split("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_",'\zs')
-  exec "imap <expr> " . k . " pumvisible() ? '" . k . "' : '" . k . "\<C-X>\<C-P>\<C-N>'"
+for k in split("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_\.",'\zs')
+  exec "imap <expr> " . k . " pumvisible() ? '" . k . "' : '" . k . "\<C-X>\<C-P>\<C-N>\<C-Space>'"
 endfor
 
 
@@ -174,4 +174,4 @@ if executable('clang-format')
   augroup END
 endif
 
-autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+" autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab

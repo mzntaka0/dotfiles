@@ -75,6 +75,8 @@ Plug 'honza/vim-snippets'
 "" Color
 Plug 'tomasr/molokai'
 
+Plug 'mrk21/yaml-vim'
+
 "*****************************************************************************
 "" Custom bundles
 "*****************************************************************************
@@ -85,8 +87,10 @@ Plug 'davidhalter/jedi-vim'
 Plug 'raimon49/requirements.txt.vim', {'for': 'requirements'}
 Plug 'andviro/flake8-vim'
 
+let g:jedi#completions_command = "<Tab>"
+
 let g:PyFlakeDisabledMessages = 'E501,W601,E265,E123,F841'
-let g:PyFlakeCWindow = 0 
+let g:PyFlakeCWindow = 0
 let g:PyFlakeMaxLineLength = 5
 let g:PyFlakeCheckers = 'pep8,mccabe,flake8,frosted'
 let g:PyFlakeOnWrite = 1
@@ -534,7 +538,6 @@ else
   let g:airline_symbols.readonly = ''
   let g:airline_symbols.linenr = ''
 endif
-
 
 set completeopt=menuone
 for k in split("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_",'\zs')
