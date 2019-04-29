@@ -177,5 +177,3 @@ alias ipm="sudo /usr/lib/inkdrop/resources/app/ipm/bin/ipm"
 md () {
   pandoc $1 | lynx -stdin
 }
-
-source ~/catkin_ws/devel/setup.zsh
