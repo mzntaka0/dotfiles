@@ -94,7 +94,7 @@ precmd() {
     [[ -t 1 ]] || return
     case $TERM in
         *xterm*|rxvt|(dt|k|E)term)
-        print -Pn "\e]2;[%~]\a"    
+        print -Pn "\e]2;[%~]\a"
 	;;
         # screen)
         #      #print -Pn "\e]0;[%n@%m %~] [%l]\a"
@@ -125,9 +125,6 @@ function cd() {
 #--------------------------------
 alias ls='ls -FG'
 alias la='ls -a'  
-alias activate="source ~/.pyenv//versions/anaconda3-4.0.0/bin/activate"
-alias deactivate="source ~/.pyenv//versions/anaconda3-4.0.0/bin/deactivate"
-alias py352con="py352"
 alias vi='sudo vim'
 alias mkdir='sudo mkdir'
 
@@ -153,12 +150,6 @@ if [ $SHLVL = 1 ]; then
 fi
 setopt nonomatch
 alias ll='ls -l'
-
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/mzntaka0/Work/9DW/6CNS/project/6CNS/google-cloud-sdk/path.zsh.inc' ]; then source '/Users/mzntaka0/Work/9DW/6CNS/project/6CNS/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/Users/mzntaka0/Work/9DW/6CNS/project/6CNS/google-cloud-sdk/completion.zsh.inc' ]; then source '/Users/mzntaka0/Work/9DW/6CNS/project/6CNS/google-cloud-sdk/completion.zsh.inc'; fi
 
 alias vimrc='vi ~/.vimrc'
 alias zshrc='vi ~/.zshrc'

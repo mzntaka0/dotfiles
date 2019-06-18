@@ -21,7 +21,7 @@ echo '#############################'
 echo '# install ansible'
 echo '#############################'
 apt-get update
-apt-get install -y software-properties-common
+apt-get install -y software-properties-common openssh-server
 apt-add-repository ppa:ansible/ansible
 apt-get update
 apt-get install -y ansible
