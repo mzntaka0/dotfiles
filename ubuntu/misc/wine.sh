@@ -4,4 +4,5 @@ apt-key add Release.key
 apt-add-repository -y -n https://dl.winehq.org/wine-builds/ubuntu/ 
 rm Release.key 
 apt update 
-apt install winehq-stable winetricks 
+apt install wine-stable winetricks 
+apt install winehq-stable
