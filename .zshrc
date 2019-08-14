@@ -168,3 +168,44 @@ alias ipm="sudo /usr/lib/inkdrop/resources/app/ipm/bin/ipm"
 md () {
   pandoc $1 | lynx -stdin
 }
+
+
+function cd {
+    if [ -z "$1" ] ; then
+        # won't add unnecessary $DIRSTACK when type cd continuously
+        test "$PWD" != "$HOME" && pushd $HOME > /dev/null
+    else
+        #builtin pushd "$1" && ls > /dev/null
+        builtin pushd "$1" > /dev/null && ls
+    fi
+}
+
+function cdh {
+    local dirnum
+    dirs -v | sort -k 2 | uniq -f 1 | sort -n -k 1 | head -n $(( LINES - 3 ))
+    read dirnum\?'enter num: '
+    if [ -z "$dirnum" ] ; then
+        echo "$FUNCNAME: Abort." 1>&2
+    elif ( echo $dirnum | egrep '^[[:digit:]]+$' > /dev/null ) ; then
+        cd "$( echo ${dirstack[$dirnum]} | sed -e "s;^~;$HOME;" )"
+    else
+        echo "$FUNCNAME: Wrong." 1>&2
+    fi
+}
+
+alias dirs="dirs -v | sort -k 2 | uniq -f 1 | sort -n -k 1 | head -n $(( LINES - 3 ))"
+
+function cdb {
+    local num=$1 i
+    if [ -z "$num" -o "$num" = 1 ] ; then
+        popd >/dev/null
+        return
+    elif [[ "$num" =~ ^[0-9]+$ ]] ; then
+        for (( i=0 ; i<num ; i++ )) ; do
+            popd >/dev/null
+        done
+        return
+    else
+        echo "cdback: argument is invalid." >&2
+    fi
+}
