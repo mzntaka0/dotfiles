@@ -59,6 +59,7 @@ export LS_COLORS='di=01;34:ln=01;35:so=01;32:ex=01;31:bd=46;34:cd=43;34:su=41;30
 #export ZLS_COLORS=$LS_COLORS
 # lsコマンド時、自動で色がつく(ls -Gのようなもの？)
 export CLICOLOR=true
+alias gls="gls --color"
 # 補完候補に色を付ける
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 
@@ -123,7 +124,8 @@ function cd() {
 #--------------------------------
 #エイリアスの設定
 #--------------------------------
-alias ls='ls -FG'
+#alias ls='ls -FG'
+alias ls='ls -F --color'
 alias la='ls -a'  
 alias vi='sudo vim'
 alias mkdir='sudo mkdir'
@@ -211,3 +213,5 @@ function cdb {
         echo "cdback: argument is invalid." >&2
     fi
 }
+
+export PIPENV_VENV_IN_PROJECT=true
