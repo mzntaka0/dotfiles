@@ -6,7 +6,7 @@
 export ZSH=/Users/takao/.oh-my-zsh
 export EDITOR=vim        # set editor to vim
 # export LANG=ja_JP.UTF-8  # 文字コードをUTF-8に設定
-export LANG=en_US
+export LANG=en_US.utf-8
 export KCODE=u           # KCODEにUTF-8を設定
 export AUTOFEATURE=true  # autotestでfeatureを動かす
 bindkey -v              # キーバインドをviモードに設定
@@ -134,7 +134,7 @@ export PYTHONPATH=$PYTHONPATH:/User/takao/.pyenv/versions/anaconda2-4.3.0/lib/py
 export PYENV_ROOT="${HOME}/.pyenv"
 export PATH=${PYENV_ROOT}/bin:$PATH
 eval "$(pyenv init -)"
-export LC_ALL=en_US
+export LC_ALL=en_US.utf-8
 #export DYLD_LIBRARY_PATH=$DYLD_LIBRARY_PATH:$(brew --prefix openssl)/lib
 export DYLD_LIBRARY_PATH=/usr/local/Cellar/openssl/1.0.21/lib
 export DYLD_LIBRARY_PATH=/usr/local/Cellar/openssl/1.0.21/lib
