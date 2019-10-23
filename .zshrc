@@ -134,7 +134,7 @@ export PYTHONPATH=$PYTHONPATH:/User/takao/.pyenv/versions/anaconda2-4.3.0/lib/py
 export PYENV_ROOT="${HOME}/.pyenv"
 export PATH=${PYENV_ROOT}/bin:$PATH
 eval "$(pyenv init -)"
-export LC_ALL=ja_JP.UTF-8
+export LC_ALL=en_US
 #export DYLD_LIBRARY_PATH=$DYLD_LIBRARY_PATH:$(brew --prefix openssl)/lib
 export DYLD_LIBRARY_PATH=/usr/local/Cellar/openssl/1.0.21/lib
 export DYLD_LIBRARY_PATH=/usr/local/Cellar/openssl/1.0.21/lib
@@ -164,6 +164,7 @@ export PATH="/usr/local/opt/sqlite/bin:$PATH"
 export PATH="/usr/local/cuda-9.0/bin:${PATH}"
 export LD_LIBRARY_PATH="/usr/local/cuda-9.0/lib64:${LD_LIBRARY_PATH}"
 export LANG=en_US.utf-8
+export LC_ALL
 alias act="source $PYENV_ROOT/versions/anaconda3-5.2.0/bin/activate"
 alias ipm="sudo /usr/lib/inkdrop/resources/app/ipm/bin/ipm"
 alias ngrokurl="curl --silent http://127.0.0.1:4040/api/tunnels | jq '.tunnels[0].public_url' | sed 's/\"//g'"
