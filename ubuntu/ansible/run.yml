@@ -1,7 +1,7 @@
 ---
 - hosts: localhost
   connection: local
-  sudo: true
+  #sudo: true
   roles:
       - {role: ubuntu-base}
       - {role: docker.ubuntu}
