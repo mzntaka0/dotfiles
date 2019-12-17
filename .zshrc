@@ -160,6 +160,7 @@ export CC="/usr/bin/gcc"
 export CXX="/usr/bin/g++"
 
 export PATH="/usr/local/opt/sqlite/bin:$PATH"
+export PATH="$HOME/.tfenv/bin:$PATH"
 
 export PATH="/usr/local/cuda-9.0/bin:${PATH}"
 export LD_LIBRARY_PATH="/usr/local/cuda-9.0/lib64:${LD_LIBRARY_PATH}"
@@ -168,6 +169,7 @@ export LC_ALL
 alias act="source $PYENV_ROOT/versions/anaconda3-5.2.0/bin/activate"
 alias ipm="sudo /usr/lib/inkdrop/resources/app/ipm/bin/ipm"
 alias ngrokurl="curl --silent http://127.0.0.1:4040/api/tunnels | jq '.tunnels[0].public_url' | sed 's/\"//g'"
+alias reload='exec $SHELL -l'
 
 
 md () {

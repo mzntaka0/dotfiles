@@ -44,7 +44,34 @@ Plug 'majutsushi/tagbar'
 "Plug 'Yggdroot/indentLine'
 Plug 'avelino/vim-bootstrap-updater'
 Plug 'sheerun/vim-polyglot'
-Plug 'suan/vim-instant-markdown'
+"Plug 'suan/vim-instant-markdown'
+Plug 'prabirshrestha/async.vim'
+Plug 'prabirshrestha/vim-lsp'
+Plug 'prabirshrestha/asyncomplete.vim'
+Plug 'prabirshrestha/asyncomplete-lsp.vim'
+"Plug 'leafgarland/typescript-vim'
+"Plug 'peitalin/vim-jsx-typescript'
+Plug 'ianks/vim-tsx'
+
+
+" for lsp
+let g:lsp_diagnostics_enabled = 0
+
+" debug
+let g:lsp_log_verbose = 1
+let g:lsp_log_file = expand('~/vim-lsp.log')
+let g:asyncomplete_log_file = expand('~/asyncomplete.log')
+
+" for typescript-lsp
+if executable('typescript-language-server')
+    au User lsp_setup call lsp#register_server({
+      \ 'name': 'javascript support using typescript-language-server',
+      \ 'cmd': { server_info->[&shell, &shellcmdflag, 'typescript-language-server --stdio']},
+      \ 'root_uri': { server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_directory(lsp#utils#get_buffer_path(), '.git/..'))},
+      \ 'whitelist': ['javascript', 'javascript.jsx', 'typescript', 'typescript.tsx']
+      \ })
+endif
+
 if isdirectory('/usr/local/opt/fzf')
   Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
 else
@@ -93,14 +120,14 @@ Plug 'andviro/flake8-vim'
 
 let g:jedi#completions_command = "<Tab>"
 
-let g:PyFlakeDisabledMessages = 'E501,W601,E265,E123,F841'
+let g:PyFlakeDisabledMessages = 'E501,W601,E265,E266,E123,F841'
 let g:PyFlakeCWindow = 0
 let g:PyFlakeMaxLineLength = 5
-let g:PyFlakeCheckers = 'pep8,mccabe,flake8,frosted'
+let g:PyFlakeCheckers = 'pep8,mccabe,flake8,frosted,mypy'
 let g:PyFlakeOnWrite = 1
 
 
-let g:pep8_ignore="E501,W601,E265"
+let g:pep8_ignore="E501,W601,E265,E266"
 
 
 "*****************************************************************************
