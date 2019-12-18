@@ -97,6 +97,14 @@ nnoremap し’ ci'
 
 nnoremap O :<C-u>call append(expand('.'), '')<Cr>j
 
+cnoremap <C-b> <Left>
+cnoremap <C-f> <Right>
+cnoremap <C-n> <Down>
+cnoremap <C-p> <Up>
+cnoremap <C-a> <Home>
+cnoremap <C-e> <End>
+cnoremap <C-d> <Del>
+
 "inoremap {<Enter> {}<Left>
 "inoremap [<Enter> []<Left>
 "inoremap (<Enter> ()<Left>
