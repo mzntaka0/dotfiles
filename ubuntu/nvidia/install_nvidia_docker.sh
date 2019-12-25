@@ -12,7 +12,8 @@ add-apt-repository \
     $(lsb_release -cs) \
     stable"
 apt-get update
-apt-get install -y docker-ce=5:18.09.0~3-0~ubuntu-xenial  # for Ubunt 16.04
+#apt-get install -y docker-ce=5:18.09.0~3-0~ubuntu-xenial  # for Ubunt 16.04
+apt-get install -y docker-ce  # for Ubunt 16.04
 
 # If you have nvidia-docker 1.0 installed: we need to remove it and all existing GPU containers
 docker volume ls -q -f driver=nvidia-docker | xargs -r -I{} -n1 docker ps -q -a -f volume={} | xargs -r docker
