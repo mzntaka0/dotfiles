@@ -52,6 +52,7 @@ Plug 'prabirshrestha/asyncomplete-lsp.vim'
 "Plug 'leafgarland/typescript-vim'
 "Plug 'peitalin/vim-jsx-typescript'
 Plug 'ianks/vim-tsx'
+Plug 'maxmellon/vim-jsx-pretty'
 
 
 " for lsp
