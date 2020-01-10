@@ -53,6 +53,7 @@ Plug 'prabirshrestha/asyncomplete-lsp.vim'
 "Plug 'peitalin/vim-jsx-typescript'
 Plug 'ianks/vim-tsx'
 Plug 'maxmellon/vim-jsx-pretty'
+Plug 'jparise/vim-graphql'
 
 
 " for lsp
