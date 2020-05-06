@@ -54,6 +54,7 @@ Plug 'prabirshrestha/asyncomplete-lsp.vim'
 Plug 'ianks/vim-tsx'
 Plug 'maxmellon/vim-jsx-pretty'
 Plug 'jparise/vim-graphql'
+Plug 'tpope/vim-surround'
 
 
 " for lsp
