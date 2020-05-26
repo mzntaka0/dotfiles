@@ -126,7 +126,7 @@ function cd() {
 #--------------------------------
 #alias ls='ls -FG'
 alias ls='ls -F --color'
-alias la='ls -a'  
+alias la='ls -a'
 alias vi='sudo vim'
 alias mkdir='sudo mkdir'
 
