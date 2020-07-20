@@ -126,9 +126,11 @@ function cd() {
 #--------------------------------
 #alias ls='ls -FG'
 alias ls='ls -F --color'
-alias la='ls -a'  
-alias vi='sudo vim'
+alias la='ls -a'
+alias vi="sudo vim -u $HOME/.vimrc"
+alias vim="sudo vim -u $HOME/.zshrc"
 alias mkdir='sudo mkdir'
+alias tig='sudo tig'
 
 export PYTHONPATH=$PYTHONPATH:/User/takao/.pyenv/versions/anaconda2-4.3.0/lib/python2.7/site-packages
 export PYENV_ROOT="${HOME}/.pyenv"
@@ -227,3 +229,5 @@ function gdrive_download () {
   wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$CONFIRM&id=$1" -O $2
   rm -rf /tmp/cookies.txt
 }
+
+source "/home/mizuno/.sdkman/bin/sdkman-init.sh"

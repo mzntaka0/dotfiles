@@ -32,9 +32,22 @@ Plug 'prabirshrestha/asyncomplete-lsp.vim'
 Plug 'ianks/vim-tsx'
 Plug 'maxmellon/vim-jsx-pretty'
 Plug 'jparise/vim-graphql'
-Plug 'udalov/kotlin-vim'
 Plug 'mbbill/undotree'
+Plug 'tpope/vim-surround'
+Plug 'udalov/kotlin-vim'
+Plug 'w0rp/ale'
 
+
+let g:ale_fixers = {'javascript': ['prettier', 'eslint']}
+let g:ale_fix_on_save = 1
+
+" for jsx
+augroup FiletypeGroup
+  autocmd!
+  au BufNewFile,BufRead *.jsx,*.tsx set filetype=javascript.jsx
+augroup END
+let g:ale_linters = {'jsx': ['stylelint', 'eslint']}
+let g:ale_linter_aliases = {'jsx': 'css'}
 
 " for lsp
 let g:lsp_diagnostics_enabled = 0

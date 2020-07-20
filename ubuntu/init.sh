@@ -7,7 +7,7 @@ gsettings set org.gnome.desktop.input-sources xkb-options "['ctrl:nocaps']"
 echo '#############################'
 echo '# make japanese available'
 echo '#############################'
-apt-get install -y ibus-mozc
+apt install -y ibus-mozc
 killall ibus-daemon
 ibus-daemon -d -x &
 echo 'you can setup japanese available, refering https://qiita.com/pg_naoyuki/items/238f6e5060fb838827f6' 
@@ -15,16 +15,16 @@ echo 'you can setup japanese available, refering https://qiita.com/pg_naoyuki/it
 echo '#############################'
 echo '# Enable Quick Look'
 echo '#############################'
-apt-get install -y gnome-sushi
+apt install -y gnome-sushi
 
 echo '#############################'
 echo '# install ansible'
 echo '#############################'
-apt-get update
-apt-get install -y software-properties-common openssh-server
+apt update
+apt install -y software-properties-common openssh-server
 apt-add-repository ppa:ansible/ansible
-apt-get update
-apt-get install -y ansible
+apt update
+apt install -y ansible
 
 echo '#############################'
 echo '# run ansible roles'
@@ -32,7 +32,7 @@ echo '#############################'
 ansible-playbook ansible/run.yml -vvv
 
 
-echo '#############################'
-echo '# install nvidia-driver'
-echo '#############################'
+#echo '#############################'
+#echo '# install nvidia-driver'
+#echo '#############################'
 #sh ./nvidia/reinstall_nvidia_driver.sh
