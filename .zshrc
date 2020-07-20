@@ -128,7 +128,7 @@ function cd() {
 alias ls='ls -F --color'
 alias la='ls -a'
 alias vi="sudo vim -u $HOME/.vimrc"
-alias vim="sudo vim -u $HOME/.zshrc"
+alias vim="sudo vim -u $HOME/.vimrc"
 alias mkdir='sudo mkdir'
 alias tig='sudo tig'
 
