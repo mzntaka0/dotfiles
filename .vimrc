@@ -3,28 +3,6 @@
 "*****************************************************************************
 "" Vim-PLug core
 "*****************************************************************************
-if has('vim_starting')
-  set nocompatible               " Be iMproved
-endif
-
-let vimplug_exists=expand('~/.vim/autoload/plug.vim')
-
-let g:vim_bootstrap_langs = "python"
-let g:vim_bootstrap_editor = "vim"				" nvim or vim
-
-if !filereadable(vimplug_exists)
-  if !executable("curl")
-    echoerr "You have to install curl or first install vim-plug yourself!"
-    execute "q!"
-  endif
-  echo "Installing Vim-Plug..."
-  echo ""
-  silent !\curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  let g:not_finish_vimplug = "yes"
-
-  autocmd VimEnter * PlugInstall
-endif
-
 " Required:
 call plug#begin(expand('~/.vim/plugged'))
 
@@ -54,6 +32,8 @@ Plug 'prabirshrestha/asyncomplete-lsp.vim'
 Plug 'ianks/vim-tsx'
 Plug 'maxmellon/vim-jsx-pretty'
 Plug 'jparise/vim-graphql'
+Plug 'udalov/kotlin-vim'
+Plug 'mbbill/undotree'
 
 
 " for lsp
@@ -161,6 +141,7 @@ set fileencodings=utf-8
 set bomb
 set binary
 set ttyfast
+set undofile
 
 set autochdir
 set colorcolumn=79
