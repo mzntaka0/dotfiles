@@ -130,6 +130,7 @@ alias la='ls -a'
 alias vi="sudo vim -u $HOME/.vimrc"
 alias vim="sudo vim -u $HOME/.zshrc"
 alias mkdir='sudo mkdir'
+alias tig='sudo tig'
 
 export PYTHONPATH=$PYTHONPATH:/User/takao/.pyenv/versions/anaconda2-4.3.0/lib/python2.7/site-packages
 export PYENV_ROOT="${HOME}/.pyenv"
