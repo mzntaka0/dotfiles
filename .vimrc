@@ -58,6 +58,7 @@ Plug 'mbbill/undotree'
 Plug 'tpope/vim-surround'
 Plug 'udalov/kotlin-vim'
 Plug 'w0rp/ale'
+Plug 'ctrlpvim/ctrlp.vim'
 
 
 let g:ale_fixers = {'javascript': ['prettier', 'eslint']}
