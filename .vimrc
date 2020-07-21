@@ -177,6 +177,7 @@ set bomb
 set binary
 set ttyfast
 set undofile
+set undodir=/tmp//
 
 set autochdir
 set colorcolumn=79
