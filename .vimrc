@@ -59,9 +59,13 @@ Plug 'tpope/vim-surround'
 Plug 'udalov/kotlin-vim'
 Plug 'w0rp/ale'
 Plug 'ctrlpvim/ctrlp.vim'
+Plug 'mattn/sonictemplate-vim'
+Plug 'codeindulgence/vim-tig'
+Plug 'frazrepo/vim-rainbow'
+Plug 'airblade/vim-gitgutter'
 
 
-let g:ale_fixers = {'javascript': ['prettier', 'eslint']}
+let g:ale_fixers = {'javascript': ['prettier', 'eslint'], 'python': ['pyflakes', 'flake8', 'pylint']}
 let g:ale_fix_on_save = 1
 
 " for jsx
@@ -382,6 +386,7 @@ set autoread
 "*****************************************************************************
 "" Mappings
 "*****************************************************************************
+map ; :Files<CR>
 
 "" Split
 noremap <Leader>h :<C-u>split<CR>
