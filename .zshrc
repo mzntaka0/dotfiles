@@ -144,14 +144,12 @@ export DYLD_LIBRARY_PATH=/usr/local/Cellar/openssl/1.0.21/lib
 
 
 
-# tmuxが起動していない場合にalias設定を行う
-#if [ $SHLVL = 1 ]; then
-#    # tmuxにセッションがなかったら新規セッションを立ち上げた際に分割処理設定を読み込む
-#    alias tmux="tmux -2 attach || tmux -2 new-session \; source-file ~/.tmux/new-session"
-#fi
-#if [ $SHLVL = 1 ]; then
-#    tmux
-#fi
+if [ $SHLVL = 1 ]; then
+    alias tmux="tmux -2 attach || tmux -2 new-session \; source-file ~/.tmux/new-session"
+fi
+if [ $SHLVL = 1 ]; then
+    tmux
+fi
 setopt nonomatch
 alias ll='ls -l'
 
