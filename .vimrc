@@ -65,7 +65,8 @@ Plug 'frazrepo/vim-rainbow'
 Plug 'airblade/vim-gitgutter'
 
 
-let g:ale_fixers = {'javascript': ['prettier', 'eslint'], 'python': ['pyflakes', 'flake8', 'pylint']}
+let g:ale_linters = {'javascript': ['prettier', 'eslint'], 'typescript': ['prettier', 'eslint'], 'python': ['pyflakes', 'flake8', 'pylint', 'mypy']}
+let g:ale_fixers = {'javascript': ['prettier_eslint', 'remove_trailing_lines', 'trim_whitespace'], 'typescript': ['prettier', 'remove_trailing_lines', 'trim_whitespace'], 'python': ['autopep8', 'isort', 'reorder-python-imports', 'remove_trailing_lines', 'trim_whitespace']}
 let g:ale_fix_on_save = 1
 
 " for jsx
@@ -73,8 +74,11 @@ augroup FiletypeGroup
   autocmd!
   au BufNewFile,BufRead *.jsx,*.tsx set filetype=javascript.jsx
 augroup END
-let g:ale_linters = {'jsx': ['stylelint', 'eslint']}
-let g:ale_linter_aliases = {'jsx': 'css'}
+"let g:ale_linters = {'jsx': ['stylelint', 'eslint']}
+"let g:ale_linter_aliases = {'jsx': 'css'}
+let g:ale_linter_aliases = {'typescriptreact': 'typescript'}
+
+autocmd FileType typescript setlocal formatprg=prettier\ --parser\ typescript
 
 " for lsp
 let g:lsp_diagnostics_enabled = 0
