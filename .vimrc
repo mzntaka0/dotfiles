@@ -65,7 +65,7 @@ Plug 'frazrepo/vim-rainbow'
 Plug 'airblade/vim-gitgutter'
 
 
-let g:ale_linters = {'javascript': ['prettier', 'eslint'], 'typescript': ['prettier', 'eslint'], 'python': ['pyflakes', 'flake8', 'pylint', 'mypy']}
+let g:ale_linters = {'javascript': ['prettier', 'eslint'], 'typescript': ['prettier', 'eslint'], 'python': ['autopep8', 'pyflakes', 'mypy']}
 let g:ale_fixers = {'javascript': ['prettier_eslint', 'remove_trailing_lines', 'trim_whitespace'], 'typescript': ['prettier', 'remove_trailing_lines', 'trim_whitespace'], 'python': ['autopep8', 'isort', 'reorder-python-imports', 'remove_trailing_lines', 'trim_whitespace']}
 let g:ale_fix_on_save = 1
 

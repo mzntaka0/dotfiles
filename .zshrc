@@ -66,19 +66,27 @@ zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 ### Prompt ###
 # プロンプトに色を付ける
 autoload -U colors; colors
+function git_branch() {
+    branch=$(git symbolic-ref HEAD 2> /dev/null | awk 'BEGIN{FS="/"} {print $NF}')
+    if [[ $branch == "" ]]; then
+        :
+    else
+        echo '('$branch')'
+    fi
+}
 # 一般ユーザ時
 tmp_prompt="%F{cyan}[%n@%D{%m/%d %T}]%f "
 #tmp_prompt="%{${fg[cyan]}%}%n%# %{${reset_color}%}"
-tmp_prompt2="%{${fg[cyan]}%}%_> %{${reset_color}%}"
-tmp_rprompt="%{${fg[green]}%}[%~]%{${reset_color}%}"
+tmp_prompt2="%{${fg[cyan]}%}%_> %{${reset_color}%} $(git_branch)"
+tmp_rprompt="%{${fg[green]}%}[%~]%{${reset_color}%} $(git_branch)"
 tmp_sprompt="%{${fg[yellow]}%}%r is correct? [Yes, No, Abort, Edit]:%{${reset_color}%}"
 
 # rootユーザ時(太字にし、アンダーバーをつける)
 if [ ${UID} -eq 0 ]; then
-  tmp_prompt="%B%U${tmp_prompt}%u%b"
-  tmp_prompt2="%B%U${tmp_prompt2}%u%b"
-  tmp_rprompt="%B%U${tmp_rprompt}%u%b"
-  tmp_sprompt="%B%U${tmp_sprompt}%u%b"
+  tmp_prompt="%B%U${tmp_prompt}%u%b $(git_branch)"
+  tmp_prompt2="%B%U${tmp_prompt2}%u%b $(git_branch)"
+  tmp_rprompt="%B%U${tmp_rprompt}%u%b $(git_branch)"
+  tmp_sprompt="%B%U${tmp_sprompt}%u%b $(git_branch)"
 fi
 
 PROMPT=$tmp_prompt    # 通常のプロンプト
@@ -131,6 +139,7 @@ alias vi="sudo vim -u $HOME/.vimrc"
 alias vim="sudo vim -u $HOME/.vimrc"
 alias mkdir='sudo mkdir'
 alias tig='sudo tig'
+alias task="sudo vim -u $HOME/.vimrc $HOME/Work/task"
 
 export PYTHONPATH=$PYTHONPATH:/User/takao/.pyenv/versions/anaconda2-4.3.0/lib/python2.7/site-packages
 export PYENV_ROOT="${HOME}/.pyenv"
@@ -229,3 +238,5 @@ function gdrive_download () {
 }
 
 source "/home/mizuno/.sdkman/bin/sdkman-init.sh"
+
+
