@@ -65,7 +65,7 @@ Plug 'frazrepo/vim-rainbow'
 Plug 'airblade/vim-gitgutter'
 
 
-let g:ale_linters = {'javascript': ['prettier', 'eslint'], 'typescript': ['prettier', 'eslint'], 'python': ['autopep8', 'pyflakes', 'mypy']}
+let g:ale_linters = {'javascript': ['prettier', 'eslint'], 'typescript': ['prettier', 'eslint', 'tslint', 'tsserver', 'typecheck'], 'python': ['autopep8', 'pyflakes', 'mypy']}
 let g:ale_fixers = {'javascript': ['prettier_eslint', 'remove_trailing_lines', 'trim_whitespace'], 'typescript': ['prettier', 'remove_trailing_lines', 'trim_whitespace'], 'python': ['autopep8', 'isort', 'reorder-python-imports', 'remove_trailing_lines', 'trim_whitespace']}
 let g:ale_fix_on_save = 1
 
@@ -76,7 +76,7 @@ augroup FiletypeGroup
 augroup END
 "let g:ale_linters = {'jsx': ['stylelint', 'eslint']}
 "let g:ale_linter_aliases = {'jsx': 'css'}
-let g:ale_linter_aliases = {'typescriptreact': 'typescript'}
+"let g:ale_linter_aliases = {'typescriptreact': 'typescript'}
 
 autocmd FileType typescript setlocal formatprg=prettier\ --parser\ typescript
 
