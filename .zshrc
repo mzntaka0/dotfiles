@@ -51,6 +51,8 @@ export LS_COLORS='rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;
 #export LS_COLORS='ow=6;96:tw=2;35:di=2;35'
 export CLICOLOR=true
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
+tmp_prompt="%F{green}[%n@%D{%m/%d %T}]%f "
+PROMPT=$tmp_prompt    # 通常のプロンプト
 
 
 
