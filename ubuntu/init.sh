@@ -26,10 +26,10 @@ apt-add-repository ppa:ansible/ansible
 apt update
 apt install -y ansible
 
-echo '#############################'
-echo '# run ansible roles'
-echo '#############################'
-ansible-playbook ansible/run.yml -vvv
+#echo '#############################'
+#echo '# run ansible roles'
+#echo '#############################'
+#ansible-playbook ansible/run.yml -vvv
 
 
 #echo '#############################'
