@@ -63,6 +63,7 @@ Plug 'mattn/sonictemplate-vim'
 Plug 'codeindulgence/vim-tig'
 Plug 'frazrepo/vim-rainbow'
 Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-obsession'
 
 
 let g:ale_linters = {'javascript': ['prettier', 'eslint'], 'typescript': ['prettier', 'eslint', 'tslint', 'tsserver', 'typecheck'], 'python': ['autopep8', 'pyflakes', 'mypy']}
