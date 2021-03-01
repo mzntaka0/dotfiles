@@ -164,3 +164,6 @@ if [ $SHLVL = 1 ]; then
     tmux
 fi
 
+
+
+export PATH="$HOME/.amplify/bin:$PATH"
