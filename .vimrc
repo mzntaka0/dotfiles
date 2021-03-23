@@ -64,7 +64,10 @@ Plug 'codeindulgence/vim-tig'
 Plug 'frazrepo/vim-rainbow'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-obsession'
+Plug 'tyru/open-browser.vim'
+Plug 'iamcco/markdown-preview.nvim'
 
+let g:openbrowser_browser_commands = [ {'name': 'google-chrome-stable',  'args': ['{browser}', '{uri}']} ]
 
 let g:ale_linters = {'javascript': ['prettier', 'eslint'], 'typescript': ['prettier', 'eslint', 'tslint', 'tsserver', 'typecheck'], 'python': ['autopep8', 'pyflakes', 'mypy']}
 let g:ale_fixers = {'javascript': ['prettier_eslint', 'remove_trailing_lines', 'trim_whitespace'], 'typescript': ['prettier', 'remove_trailing_lines', 'trim_whitespace'], 'python': ['remove_trailing_lines', 'trim_whitespace']}
@@ -157,7 +160,7 @@ let g:PyFlakeCheckers = 'pep8,mccabe,flake8,frosted,mypy'
 let g:PyFlakeOnWrite = 1
 
 
-let g:pep8_ignore="E501,W601,E265,E266"
+let g:pep8_ignore="E501,W601,E265,E266,E741"
 
 
 "*****************************************************************************
