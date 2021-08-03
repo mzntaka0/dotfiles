@@ -43,6 +43,7 @@ function history-all { history -E 1 }
 # ------------------------------
 # Look And Feel Settings
 # ------------------------------
+
 ZSH_THEME="agnoster"
 autoload -U colors; colors
 export LSCOLORS=Exfxcxdxbxegedabagacad
@@ -52,7 +53,9 @@ export LS_COLORS='rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;
 export CLICOLOR=true
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 tmp_prompt="%F{green}[%n@%D{%m/%d %T}]%f "
-PROMPT=$tmp_prompt    # 通常のプロンプト
+tmp_rprompt="%{${fg[green]}%}[%~]%{${reset_color}%}"
+PROMPT=$tmp_prompt
+RPROMPT=$tmp_rprompt
 
 
 
@@ -171,3 +174,7 @@ export PATH="$HOME/.amplify/bin:$PATH"
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+yq() {
+  sudo docker run --rm -i -v "${PWD}":/workdir mikefarah/yq "$@"
+}
