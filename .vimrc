@@ -66,12 +66,14 @@ Plug 'frazrepo/vim-rainbow'
 Plug 'tpope/vim-obsession'
 Plug 'tyru/open-browser.vim'
 Plug 'iamcco/markdown-preview.nvim'
+Plug 'vimwiki/vimwiki'
 
 let g:openbrowser_browser_commands = [ {'name': 'google-chrome-stable',  'args': ['{browser}', '{uri}']} ]
 
 let g:ale_linters = {'javascript': ['prettier', 'eslint'], 'typescript': ['prettier', 'eslint', 'tslint', 'tsserver', 'typecheck'], 'python': ['autopep8', 'pyflakes', 'mypy']}
-let g:ale_fixers = {'javascript': ['prettier_eslint', 'remove_trailing_lines', 'trim_whitespace'], 'typescript': ['prettier', 'remove_trailing_lines', 'trim_whitespace'], 'python': ['remove_trailing_lines', 'trim_whitespace']}
+let g:ale_fixers = {'javascript': ['prettier', 'remove_trailing_lines', 'trim_whitespace'], 'typescript': ['prettier', 'remove_trailing_lines', 'trim_whitespace'], 'python': ['remove_trailing_lines', 'trim_whitespace']}
 let g:ale_fix_on_save = 1
+let g:ale_completion_enabled = 1
 
 " for jsx
 augroup FiletypeGroup

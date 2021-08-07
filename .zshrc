@@ -69,7 +69,6 @@ alias ls='ls -F --color'
 alias mkdir='sudo mkdir'
 alias ngrokurl="curl --silent http://127.0.0.1:4040/api/tunnels | jq '.tunnels[0].public_url' | sed 's/\"//g'"
 alias reload='exec $SHELL -l'
-alias task="sudo vim -u $HOME/.vimrc $HOME/Work/task"
 alias tig='sudo tig'
 alias vi="sudo vim -u $HOME/.vimrc"
 alias vim="sudo vim -u $HOME/.vimrc"
@@ -78,6 +77,7 @@ alias vpn='cat /home/mzntaka0pdt/Work/Backups/vpn.txt'
 alias zshrc='vi ~/.zshrc'
 alias gls="gls --color"
 alias ipm="sudo /usr/lib/inkdrop/resources/app/ipm/bin/ipm"
+alias aws="sudo docker run --rm -it amazon/aws-cli"
 
 ### Exports ###
 export CC="/usr/bin/gcc"
@@ -171,3 +171,4 @@ export PATH="$HOME/.amplify/bin:$PATH"
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
