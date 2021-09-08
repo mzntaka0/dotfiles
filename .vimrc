@@ -76,6 +76,8 @@ let g:ale_fixers = {'javascript': ['prettier', 'remove_trailing_lines', 'trim_wh
 let g:ale_fix_on_save = 1
 let g:ale_completion_enabled = 1
 
+let g:ale_python_mypy_options = '--ignore-missing-imports'
+
 " for jsx
 augroup FiletypeGroup
   autocmd!
