@@ -68,6 +68,8 @@ Plug 'tyru/open-browser.vim'
 Plug 'iamcco/markdown-preview.nvim'
 Plug 'vimwiki/vimwiki'
 Plug 'xarthurx/taskwarrior.vim'
+Plug 'jalvesaq/Nvim-R'
+
 
 let g:openbrowser_browser_commands = [ {'name': 'google-chrome-stable',  'args': ['{browser}', '{uri}']} ]
 
@@ -75,6 +77,10 @@ let g:ale_linters = {'javascript': ['prettier', 'eslint'], 'typescript': ['prett
 let g:ale_fixers = {'javascript': ['prettier', 'remove_trailing_lines', 'trim_whitespace'], 'typescript': ['prettier', 'remove_trailing_lines', 'trim_whitespace'], 'python': ['black', 'remove_trailing_lines', 'trim_whitespace']}
 let g:ale_fix_on_save = 1
 let g:ale_completion_enabled = 1
+let g:ale_hover_to_preview = 1
+let g:ale_hover_to_floating_preview = 1
+let g:ale_floating_preview = 1
+let g:ale_completion_autoimport = 1
 
 let g:ale_python_mypy_options = '--ignore-missing-imports'
 
@@ -831,4 +837,21 @@ if has("autocmd")
   autocmd FileType javascript.jsx  setlocal sw=2 sts=2 ts=2 et
   autocmd FileType typescript  setlocal sw=2 sts=2 ts=2 et
   autocmd FileType typescript.tsx  setlocal sw=2 sts=2 ts=2 et
+endif
+
+
+if &term =~ "xterm"
+    let &t_ti .= "\e[?2004h"
+    let &t_te .= "\e[?2004l"
+    let &pastetoggle = "\e[201~"
+
+    function XTermPasteBegin(ret)
+        set paste
+        return a:ret
+    endfunction
+
+    noremap <special> <expr> <Esc>[200~ XTermPasteBegin("0i")
+    inoremap <special> <expr> <Esc>[200~ XTermPasteBegin("")
+    cnoremap <special> <Esc>[200~ <nop>
+    cnoremap <special> <Esc>[201~ <nop>
 endif
