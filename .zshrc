@@ -88,11 +88,13 @@ export CXX="/usr/bin/g++"
 export LANG=en_US.utf-8
 export LC_ALL=en_US.utf-8
 export LC_ALL
+export PATH="$HOME/.amplify/bin:$PATH"
 export PATH="$HOME/.tfenv/bin:$PATH"
 export PATH="/usr/local/opt/sqlite/bin:$PATH"
 export PATH=${PYENV_ROOT}/bin:$PATH
 export PIPENV_VENV_IN_PROJECT=true
 export PYENV_ROOT="${HOME}/.pyenv"
+export PATH=$(pyenv root)/shims:$PATH
 
 
 
@@ -169,7 +171,6 @@ fi
 
 
 
-export PATH="$HOME/.amplify/bin:$PATH"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
