@@ -1,5 +1,6 @@
-chema": "https://aka.ms/terminal-profiles-schema",
-    "actions": 
+{
+    "schema": "https://aka.ms/terminal-profiles-schema",
+    "actions":
     [
         {
             "command": "closeWindow",
@@ -14,7 +15,7 @@ chema": "https://aka.ms/terminal-profiles-schema",
             "keys": "f11"
         },
         {
-            "command": 
+            "command":
             {
                 "action": "scrollDown"
             },
@@ -25,7 +26,7 @@ chema": "https://aka.ms/terminal-profiles-schema",
             "keys": "ctrl+shift+space"
         },
         {
-            "command": 
+            "command":
             {
                 "action": "newTab",
                 "index": 1
@@ -33,14 +34,14 @@ chema": "https://aka.ms/terminal-profiles-schema",
             "keys": "ctrl+shift+2"
         },
         {
-            "command": 
+            "command":
             {
                 "action": "openSettings"
             },
             "keys": "ctrl+,"
         },
         {
-            "command": 
+            "command":
             {
                 "action": "splitPane",
                 "split": "horizontal"
@@ -48,7 +49,7 @@ chema": "https://aka.ms/terminal-profiles-schema",
             "keys": "alt+shift+-"
         },
         {
-            "command": 
+            "command":
             {
                 "action": "newTab"
             },
@@ -59,7 +60,7 @@ chema": "https://aka.ms/terminal-profiles-schema",
             "keys": "ctrl+shift+f"
         },
         {
-            "command": 
+            "command":
             {
                 "action": "moveFocus",
                 "direction": "up"
@@ -67,7 +68,7 @@ chema": "https://aka.ms/terminal-profiles-schema",
             "keys": "alt+up"
         },
         {
-            "command": 
+            "command":
             {
                 "action": "newTab",
                 "index": 0
@@ -75,7 +76,7 @@ chema": "https://aka.ms/terminal-profiles-schema",
             "keys": "ctrl+shift+1"
         },
         {
-            "command": 
+            "command":
             {
                 "action": "newTab",
                 "index": 2
@@ -83,7 +84,7 @@ chema": "https://aka.ms/terminal-profiles-schema",
             "keys": "ctrl+shift+3"
         },
         {
-            "command": 
+            "command":
             {
                 "action": "newTab",
                 "index": 3
@@ -91,7 +92,7 @@ chema": "https://aka.ms/terminal-profiles-schema",
             "keys": "ctrl+shift+4"
         },
         {
-            "command": 
+            "command":
             {
                 "action": "switchToTab",
                 "index": 3
@@ -99,7 +100,7 @@ chema": "https://aka.ms/terminal-profiles-schema",
             "keys": "ctrl+alt+4"
         },
         {
-            "command": 
+            "command":
             {
                 "action": "switchToTab",
                 "index": 7
@@ -107,14 +108,14 @@ chema": "https://aka.ms/terminal-profiles-schema",
             "keys": "ctrl+alt+8"
         },
         {
-            "command": 
+            "command":
             {
                 "action": "scrollUp"
             },
             "keys": "ctrl+shift+up"
         },
         {
-            "command": 
+            "command":
             {
                 "action": "newTab",
                 "index": 4
@@ -122,7 +123,7 @@ chema": "https://aka.ms/terminal-profiles-schema",
             "keys": "ctrl+shift+5"
         },
         {
-            "command": 
+            "command":
             {
                 "action": "newTab",
                 "index": 5
@@ -130,7 +131,7 @@ chema": "https://aka.ms/terminal-profiles-schema",
             "keys": "ctrl+shift+6"
         },
         {
-            "command": 
+            "command":
             {
                 "action": "newTab",
                 "index": 6
@@ -138,7 +139,7 @@ chema": "https://aka.ms/terminal-profiles-schema",
             "keys": "ctrl+shift+7"
         },
         {
-            "command": 
+            "command":
             {
                 "action": "newTab",
                 "index": 7
@@ -146,7 +147,7 @@ chema": "https://aka.ms/terminal-profiles-schema",
             "keys": "ctrl+shift+8"
         },
         {
-            "command": 
+            "command":
             {
                 "action": "newTab",
                 "index": 8
@@ -158,14 +159,14 @@ chema": "https://aka.ms/terminal-profiles-schema",
             "keys": "ctrl+shift+d"
         },
         {
-            "command": 
+            "command":
             {
                 "action": "nextTab"
             },
             "keys": "ctrl+tab"
         },
         {
-            "command": 
+            "command":
             {
                 "action": "resizePane",
                 "direction": "down"
@@ -173,14 +174,14 @@ chema": "https://aka.ms/terminal-profiles-schema",
             "keys": "alt+shift+down"
         },
         {
-            "command": 
+            "command":
             {
                 "action": "prevTab"
             },
             "keys": "ctrl+shift+tab"
         },
         {
-            "command": 
+            "command":
             {
                 "action": "switchToTab",
                 "index": 5
@@ -188,7 +189,7 @@ chema": "https://aka.ms/terminal-profiles-schema",
             "keys": "ctrl+alt+6"
         },
         {
-            "command": 
+            "command":
             {
                 "action": "switchToTab",
                 "index": 0
@@ -196,7 +197,7 @@ chema": "https://aka.ms/terminal-profiles-schema",
             "keys": "ctrl+alt+1"
         },
         {
-            "command": 
+            "command":
             {
                 "action": "resizePane",
                 "direction": "left"
@@ -208,7 +209,7 @@ chema": "https://aka.ms/terminal-profiles-schema",
             "keys": "ctrl+shift+pgdn"
         },
         {
-            "command": 
+            "command":
             {
                 "action": "switchToTab",
                 "index": 1
@@ -216,7 +217,7 @@ chema": "https://aka.ms/terminal-profiles-schema",
             "keys": "ctrl+alt+2"
         },
         {
-            "command": 
+            "command":
             {
                 "action": "switchToTab",
                 "index": 2
@@ -224,7 +225,7 @@ chema": "https://aka.ms/terminal-profiles-schema",
             "keys": "ctrl+alt+3"
         },
         {
-            "command": 
+            "command":
             {
                 "action": "switchToTab",
                 "index": 4
@@ -232,7 +233,7 @@ chema": "https://aka.ms/terminal-profiles-schema",
             "keys": "ctrl+alt+5"
         },
         {
-            "command": 
+            "command":
             {
                 "action": "switchToTab",
                 "index": 6
@@ -240,7 +241,7 @@ chema": "https://aka.ms/terminal-profiles-schema",
             "keys": "ctrl+alt+7"
         },
         {
-            "command": 
+            "command":
             {
                 "action": "switchToTab",
                 "index": 8
@@ -248,7 +249,7 @@ chema": "https://aka.ms/terminal-profiles-schema",
             "keys": "ctrl+alt+9"
         },
         {
-            "command": 
+            "command":
             {
                 "action": "resizePane",
                 "direction": "up"
@@ -260,7 +261,7 @@ chema": "https://aka.ms/terminal-profiles-schema",
             "keys": "ctrl+shift+w"
         },
         {
-            "command": 
+            "command":
             {
                 "action": "splitPane",
                 "split": "vertical"
@@ -268,7 +269,7 @@ chema": "https://aka.ms/terminal-profiles-schema",
             "keys": "alt+shift+plus"
         },
         {
-            "command": 
+            "command":
             {
                 "action": "resizePane",
                 "direction": "right"
@@ -276,7 +277,7 @@ chema": "https://aka.ms/terminal-profiles-schema",
             "keys": "alt+shift+right"
         },
         {
-            "command": 
+            "command":
             {
                 "action": "moveFocus",
                 "direction": "down"
@@ -284,7 +285,7 @@ chema": "https://aka.ms/terminal-profiles-schema",
             "keys": "alt+down"
         },
         {
-            "command": 
+            "command":
             {
                 "action": "moveFocus",
                 "direction": "left"
@@ -292,7 +293,7 @@ chema": "https://aka.ms/terminal-profiles-schema",
             "keys": "alt+left"
         },
         {
-            "command": 
+            "command":
             {
                 "action": "moveFocus",
                 "direction": "right"
@@ -300,7 +301,7 @@ chema": "https://aka.ms/terminal-profiles-schema",
             "keys": "alt+right"
         },
         {
-            "command": 
+            "command":
             {
                 "action": "copy",
                 "singleLine": false
@@ -308,7 +309,7 @@ chema": "https://aka.ms/terminal-profiles-schema",
             "keys": "ctrl+shift+c"
         },
         {
-            "command": 
+            "command":
             {
                 "action": "copy",
                 "singleLine": false
@@ -328,7 +329,7 @@ chema": "https://aka.ms/terminal-profiles-schema",
             "keys": "ctrl+shift+pgup"
         },
         {
-            "command": 
+            "command":
             {
                 "action": "adjustFontSize",
                 "delta": 1
@@ -336,7 +337,7 @@ chema": "https://aka.ms/terminal-profiles-schema",
             "keys": "ctrl+plus"
         },
         {
-            "command": 
+            "command":
             {
                 "action": "adjustFontSize",
                 "delta": -1
@@ -356,10 +357,10 @@ chema": "https://aka.ms/terminal-profiles-schema",
     "initialCols": 120,
     "initialRows": 30,
     "launchMode": "maximized",
-    "profiles": 
+    "profiles":
     {
         "defaults": {},
-        "list": 
+        "list":
         [
             {
                 "antialiasingMode": "grayscale",
@@ -426,7 +427,7 @@ chema": "https://aka.ms/terminal-profiles-schema",
             }
         ]
     },
-    "schemes": 
+    "schemes":
     [
         {
             "background": "#0C0C0C",
