@@ -799,6 +799,7 @@ function! s:GetBufferDirectory()
 endfunction'
 
 autocmd BufNewFile *.py 0r $HOME/.vim/templates/python.txt
+autocmd BufNewFile *.tsx 0r $HOME/.vim/templates/typescript.txt
 
 function! s:clang_format()
   let now_line = line(".")
