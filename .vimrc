@@ -69,12 +69,14 @@ Plug 'iamcco/markdown-preview.nvim'
 Plug 'vimwiki/vimwiki'
 Plug 'xarthurx/taskwarrior.vim'
 Plug 'jalvesaq/Nvim-R'
+Plug 'rhysd/vim-wasm'
+Plug 'rust-lang/rust.vim'
 
 
 let g:openbrowser_browser_commands = [ {'name': 'google-chrome-stable',  'args': ['{browser}', '{uri}']} ]
 
-let g:ale_linters = {'javascript': ['prettier', 'eslint'], 'typescript': ['prettier', 'eslint', 'tslint', 'tsserver', 'typecheck'], 'python': ['autopep8', 'pyflakes', 'mypy']}
-let g:ale_fixers = {'javascript': ['prettier', 'remove_trailing_lines', 'trim_whitespace'], 'typescript': ['prettier', 'remove_trailing_lines', 'trim_whitespace'], 'python': ['black', 'remove_trailing_lines', 'trim_whitespace']}
+let g:ale_linters = {'javascript': ['prettier', 'eslint'], 'typescript': ['prettier', 'eslint', 'tslint', 'tsserver', 'typecheck'], 'python': ['autopep8', 'pyflakes', 'mypy'], 'rust': ['analyzer']}
+let g:ale_fixers = {'javascript': ['prettier', 'remove_trailing_lines', 'trim_whitespace'], 'typescript': ['prettier', 'remove_trailing_lines', 'trim_whitespace'], 'python': ['black', 'remove_trailing_lines', 'trim_whitespace'], 'rust': ['analyzer']}
 let g:ale_fix_on_save = 1
 let g:ale_completion_enabled = 1
 let g:ale_hover_to_preview = 1
