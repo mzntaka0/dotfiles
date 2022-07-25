@@ -86,6 +86,8 @@ let g:ale_completion_autoimport = 1
 
 let g:ale_python_mypy_options = '--ignore-missing-imports'
 
+let g:rustfmt_autosave = 1
+
 " for jsx
 augroup FiletypeGroup
   autocmd!
