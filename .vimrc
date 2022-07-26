@@ -71,6 +71,7 @@ Plug 'xarthurx/taskwarrior.vim'
 Plug 'jalvesaq/Nvim-R'
 Plug 'rhysd/vim-wasm'
 Plug 'rust-lang/rust.vim'
+Plug 'andymass/vim-matchup'
 
 
 let g:openbrowser_browser_commands = [ {'name': 'google-chrome-stable',  'args': ['{browser}', '{uri}']} ]
