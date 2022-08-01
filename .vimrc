@@ -114,6 +114,22 @@ nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
+" Use <Tab> and <S-Tab> to navigate the completion list
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
+" ref. https://vi.stackexchange.com/questions/24892/unmap-c-n-c-p-in-completion-menu-to-use-as-previous-next-snippet-placeho
+let g:coc_snippet_next = ''
+let g:coc_snippet_prev = ''
+inoremap <expr> <c-j>
+   \ pumvisible() ? "\<c-n>" :
+   \ coc#jumpable() ? "\<c-r>=coc#rpc#request('snippetNext', [])<cr>" :
+   \ "\<c-j>"
+inoremap <expr> <c-k>
+   \ pumvisible() ? "\<c-p>" :
+   \ coc#jumpable() ? "\<c-r>=coc#rpc#request('snippetPrev', [])<cr>" :
+   \ "\<c-k>"
+
 " for jsx
 augroup FiletypeGroup
   autocmd!
@@ -670,6 +686,7 @@ filetype indent on
 filetype plugin indent on
 colorscheme desert
 syntax on
+
 
 " settings
 set autoindent      " auto indent
