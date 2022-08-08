@@ -81,14 +81,15 @@ let g:ale_linters = {'javascript': ['prettier', 'eslint'], 'typescript': ['prett
 let g:ale_fixers = {'javascript': ['prettier', 'remove_trailing_lines', 'trim_whitespace'], 'typescript': ['prettier', 'remove_trailing_lines', 'trim_whitespace'], 'python': ['black', 'remove_trailing_lines', 'trim_whitespace'], 'rust': ['rustfmt', 'remove_trailing_lines', 'trim_whitespace']}
 let g:ale_fix_on_save = 1
 let g:ale_completion_enabled = 1
-let g:ale_hover_to_preview = 1
-let g:ale_hover_to_floating_preview = 1
+"let g:ale_hover_to_preview = 1
+"let g:ale_hover_to_floating_preview = 1
 let g:ale_floating_preview = 1
-let g:ale_completion_autoimport = 1
+"let g:ale_completion_autoimport = 1
 
 let g:ale_python_mypy_options = '--ignore-missing-imports'
 
 let g:rustfmt_autosave = 1
+let g:ale_rust_cargo_use_clippy = executable('cargo-clippy')
 
 " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
 " delays and poor user experience.
@@ -129,6 +130,11 @@ inoremap <expr> <c-k>
    \ pumvisible() ? "\<c-p>" :
    \ coc#jumpable() ? "\<c-r>=coc#rpc#request('snippetPrev', [])<cr>" :
    \ "\<c-k>"
+
+" Highlight the symbol and its references when holding the cursor.
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
 " for jsx
 augroup FiletypeGroup
