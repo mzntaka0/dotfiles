@@ -74,6 +74,7 @@ Plug 'rust-lang/rust.vim'
 Plug 'andymass/vim-matchup'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'flazz/vim-colorschemes'
+Plug 'Dimercel/todo-vim'
 
 
 
@@ -695,6 +696,12 @@ filetype plugin indent on
 colorscheme 0x7A69_dark
 syntax on
 
+augroup vimrc_todo
+    au!
+    au Syntax * syn match MyTodo /\v<(FIXME|NOTE|TODO|OPTIMIZE|XXX)/
+          \ containedin=.*Comment,vimCommentTitle
+augroup END
+hi def link MyTodo Todo
 
 " settings
 set autoindent      " auto indent
