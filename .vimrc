@@ -73,6 +73,8 @@ Plug 'rhysd/vim-wasm'
 Plug 'rust-lang/rust.vim'
 Plug 'andymass/vim-matchup'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'flazz/vim-colorschemes'
+
 
 
 let g:openbrowser_browser_commands = [ {'name': 'google-chrome-stable',  'args': ['{browser}', '{uri}']} ]
@@ -307,7 +309,7 @@ set number
 
 let no_buffers_menu=1
 if !exists('g:not_finish_vimplug')
-  colorscheme desert
+  colorscheme default
 endif
 
 set mousemodel=popup
@@ -690,7 +692,7 @@ syntax enable
 filetype plugin on
 filetype indent on
 filetype plugin indent on
-colorscheme desert
+colorscheme 0x7A69_dark
 syntax on
 
 
