@@ -15,7 +15,7 @@ setopt notify
 setopt nonomatch
 
 ### Complement ###
-autoload -U compinit; compinit # enable a complement
+autoload -Uz compinit && compinit
 setopt auto_list
 setopt auto_menu
 setopt list_packed
@@ -58,7 +58,6 @@ PROMPT=$tmp_prompt
 RPROMPT=$tmp_rprompt
 
 
-
 # ------------------------------
 # Other Settings
 # ------------------------------
@@ -96,6 +95,7 @@ export PIPENV_VENV_IN_PROJECT=true
 export PYENV_ROOT="${HOME}/.pyenv"
 export PATH=$(pyenv root)/shims:$PATH
 export PATH=$PATH:/usr/local/go/bin
+export PATH="${PATH}:${HOME}/.krew/bin"
 
 
 
@@ -157,7 +157,6 @@ function gdrive_download () {
   rm -rf /tmp/cookies.txt
 }
 
-
 ### Run ###
 # pyenv
 eval "$(pyenv init -)"
@@ -170,6 +169,12 @@ if [ $SHLVL = 1 ]; then
     tmux
 fi
 
+function precmd() {
+  if [ ! -z $TMUX ]; then
+    tmux refresh-client -S
+  fi
+}
+
 
 
 
@@ -180,3 +185,4 @@ export NVM_DIR="$HOME/.nvm"
 export EDITOR=vim
 eval "$(direnv hook zsh)"
 
+export PATH="${PATH}:${HOME}/.krew/bin"

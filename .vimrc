@@ -75,6 +75,7 @@ Plug 'andymass/vim-matchup'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'flazz/vim-colorschemes'
 Plug 'Dimercel/todo-vim'
+Plug 'github/copilot.vim'
 
 
 
@@ -226,7 +227,8 @@ let g:PyFlakeCheckers = 'pep8,mccabe,flake8,frosted,mypy'
 let g:PyFlakeOnWrite = 1
 
 
-let g:pep8_ignore="E501,W601,E265,E266,E741"
+let g:pep8_ignore="E501,W601,E265,E266,E741,E731"
+let g:pymode_lint_ignore = "E731,W"
 
 
 "*****************************************************************************
