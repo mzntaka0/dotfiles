@@ -45,10 +45,10 @@ Plug 'majutsushi/tagbar'
 Plug 'avelino/vim-bootstrap-updater'
 Plug 'sheerun/vim-polyglot'
 "Plug 'suan/vim-instant-markdown'
-Plug 'prabirshrestha/async.vim'
-Plug 'prabirshrestha/vim-lsp'
-Plug 'prabirshrestha/asyncomplete.vim'
-Plug 'prabirshrestha/asyncomplete-lsp.vim'
+"Plug 'prabirshrestha/async.vim'
+"Plug 'prabirshrestha/vim-lsp'
+"Plug 'prabirshrestha/asyncomplete.vim'
+"Plug 'prabirshrestha/asyncomplete-lsp.vim'
 "Plug 'leafgarland/typescript-vim'
 "Plug 'peitalin/vim-jsx-typescript'
 Plug 'ianks/vim-tsx'
@@ -84,11 +84,12 @@ let g:openbrowser_browser_commands = [ {'name': 'google-chrome-stable',  'args':
 let g:ale_linters = {'javascript': ['prettier', 'eslint'], 'typescript': ['prettier', 'eslint', 'tslint', 'tsserver', 'typecheck'], 'python': ['autopep8', 'pyflakes', 'mypy'], 'rust': ['analyzer', 'clippy']}
 let g:ale_fixers = {'javascript': ['prettier', 'remove_trailing_lines', 'trim_whitespace'], 'typescript': ['prettier', 'remove_trailing_lines', 'trim_whitespace'], 'python': ['black', 'remove_trailing_lines', 'trim_whitespace'], 'rust': ['rustfmt', 'remove_trailing_lines', 'trim_whitespace']}
 let g:ale_fix_on_save = 1
-let g:ale_completion_enabled = 1
+let g:ale_completion_enabled = 0
 "let g:ale_hover_to_preview = 1
 "let g:ale_hover_to_floating_preview = 1
 let g:ale_floating_preview = 1
 "let g:ale_completion_autoimport = 1
+let g:ale_sign_column_always = 1
 
 let g:ale_python_mypy_options = '--ignore-missing-imports'
 
@@ -676,10 +677,6 @@ else
   let g:airline_symbols.linenr = ''
 endif
 
-set completeopt=menuone
-for k in split("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_",'\zs')
-  exec "imap <expr> " . k . " pumvisible() ? '" . k . "' : '" . k . "\<C-X>\<C-P>\<C-N>'"
-endfor
 
 highlight LeadingWhitespaces ctermbg=234
 highlight TrailingWhitespaces ctermbg=234
@@ -818,10 +815,6 @@ endfunction
 autocmd MyAutoCmd BufWritePre * call s:mkdir(expand('<afile>:p:h'), v:cmdbang)
 
 
-set completeopt=menuone
-for k in split("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_\.",'\zs')
-  exec "imap <expr> " . k . " pumvisible() ? '" . k . "' : '" . k . "\<C-X>\<C-P>\<C-N>'"
-endfor
 
 
 " python
