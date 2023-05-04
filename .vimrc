@@ -89,7 +89,7 @@ let g:ale_completion_enabled = 0
 "let g:ale_hover_to_floating_preview = 1
 let g:ale_floating_preview = 1
 "let g:ale_completion_autoimport = 1
-let g:ale_sign_column_always = 1
+let g:ale_sign_column_always = 0
 
 let g:ale_python_mypy_options = '--ignore-missing-imports'
 
@@ -102,12 +102,7 @@ set updatetime=300
 
 " Always show the signcolumn, otherwise it would shift the text each time
 " diagnostics appear/become resolved.
-if has("patch-8.1.1564")
-  " Recently vim can merge signcolumn and number column into one
-  set signcolumn=number
-else
-  set signcolumn=yes
-endif
+set signcolumn=auto
 
 " Make <CR> auto-select the first completion item and notify coc.nvim to
 " format on enter, <cr> could be remapped by other vim plugin

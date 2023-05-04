@@ -45,6 +45,7 @@ set shiftround
 set shiftwidth=4    " width of tab
 set showcmd         " show command when typing
 set showmatch       " emphesize pair bracket
+set signcolumn=auto
 set smartcase       " distinguish lower and upper when search with starting uppercase
 set smartindent     " autoindent
 set termencoding=UTF-8
