@@ -7,3 +7,4 @@ ln -si $HOME/dotfiles/.tmux.conf $HOME
 ln -si $HOME/dotfiles/.tmux $HOME
 mkdir -p $HOME/.vim/templates
 ln -si $HOME/dotfiles/templates/python.txt $HOME/.vim/templates/
+ln -si $HOME/dotfiles/coc-settings.json $HOME/.vim/
