@@ -20,6 +20,7 @@ set cindent
 set clipboard&
 set clipboard^=unnamedplus
 set clipboard=unnamed,autoselect
+set cmdheight=2
 set encoding=utf-8
 set expandtab       " tab to space
 set enc=utf-8
@@ -44,6 +45,7 @@ set ruler
 set shiftround
 set shiftwidth=4    " width of tab
 set showcmd         " show command when typing
+set shortmess+=c
 set showmatch       " emphesize pair bracket
 set signcolumn=auto
 set smartcase       " distinguish lower and upper when search with starting uppercase
@@ -55,6 +57,7 @@ set tabstop=3       " width of tab
 set title
 set ttyfast
 set vb t_vb=
+set updatetime=300
 set wildmenu
 set wildmode=longest:full,full
 set wildignore=*.o,*.obj,*.pyc,*.so,*.dll
