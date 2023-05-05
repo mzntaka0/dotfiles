@@ -183,7 +183,7 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 export EDITOR=vim
-eval "$(direnv hook zsh)"
+#eval "$(direnv hook zsh)"
 
 export PATH="${PATH}:${HOME}/.krew/bin"
 export RTX_SHELL=zsh
