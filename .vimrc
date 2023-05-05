@@ -78,6 +78,7 @@ Plug 'Dimercel/todo-vim'
 Plug 'github/copilot.vim'
 
 
+let g:coc_global_extensions = ['coc-json', 'coc-tsserver', 'coc-jedi', 'coc-rust-analyzer', 'coc-highlight', 'coc-pairs', 'coc-yank', 'coc-toml', 'coc-pydocstring', 'coc-lists']
 
 let g:openbrowser_browser_commands = [ {'name': 'google-chrome-stable',  'args': ['{browser}', '{uri}']} ]
 
@@ -130,6 +131,25 @@ inoremap <expr> <c-k>
    \ pumvisible() ? "\<c-p>" :
    \ coc#jumpable() ? "\<c-r>=coc#rpc#request('snippetPrev', [])<cr>" :
    \ "\<c-k>"
+
+
+" Use K to show documentation in preview window
+nnoremap <silent> K :call ShowDocumentation()<CR>
+
+function! ShowDocumentation()
+  if CocAction('hasProvider', 'hover')
+    call CocActionAsync('doHover')
+  else
+    call feedkeys('K', 'in')
+  endif
+endfunction
+
+" Use <c-space> to trigger completion
+if has('nvim')
+  inoremap <silent><expr> <c-space> coc#refresh()
+else
+  inoremap <silent><expr> <c-@> coc#refresh()
+endif
 
 " Highlight the symbol and its references when holding the cursor.
 autocmd CursorHold * silent call CocActionAsync('highlight')
@@ -718,7 +738,6 @@ set hlsearch        " clear highlight with esc
 set ignorecase      " search both lower and upper when search lowercase
 set incsearch       " incremental search
 set infercase           " complement both lower and upper
-set matchpairs& matchpairs+=<:> " add <> to brackets
 set nocompatible
 set noincsearch
 set nostartofline
