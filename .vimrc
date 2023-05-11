@@ -76,6 +76,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'flazz/vim-colorschemes'
 Plug 'Dimercel/todo-vim'
 Plug 'github/copilot.vim'
+Plug 'cespare/vim-toml', { 'branch': 'main' }
 
 
 
