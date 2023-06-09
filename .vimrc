@@ -132,7 +132,7 @@ nmap <space>eb <Cmd>CocCommand explorer --preset buffer<CR>
 nmap <space>el <Cmd>CocList explPresets<CR>
 
 
-let g:coc_global_extensions = ['coc-json', 'coc-tsserver', 'coc-jedi', 'coc-rust-analyzer', 'coc-highlight', 'coc-pairs', 'coc-toml', 'coc-pydocstring', 'coc-lists', 'coc-yaml', 'coc-vimlsp', 'coc-docker', 'coc-html', 'coc-markdownlint', 'coc-sh', 'coc-explorer']
+let g:coc_global_extensions = ['coc-json', 'coc-tsserver', 'coc-jedi', 'coc-rust-analyzer', 'coc-highlight', 'coc-pairs', 'coc-toml', 'coc-pydocstring', 'coc-lists', 'coc-yaml', 'coc-vimlsp', 'coc-docker', 'coc-html', 'coc-markdownlint', 'coc-sh', 'coc-explorer', 'coc-css']
 
 let g:openbrowser_browser_commands = [ {'name': 'google-chrome-stable',  'args': ['{browser}', '{uri}']} ]
 
