@@ -97,6 +97,7 @@ export PYENV_ROOT="${HOME}/.pyenv"
 export PATH=$(pyenv root)/shims:$PATH
 export PATH=$PATH:/usr/local/go/bin
 export PATH="${PATH}:${HOME}/.krew/bin"
+source "$HOME/.rye/env"
 
 
 
