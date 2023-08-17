@@ -43,6 +43,13 @@ function history-all { history -E 1 }
 # ------------------------------
 # Look And Feel Settings
 # ------------------------------
+function git_branch_name()
+{
+    git branch 2> /dev/null | sed -n -e 's/^\* \(.*\)/(\1)/p'
+}
+
+# Enable substitution in the prompt.
+setopt prompt_subst
 
 ZSH_THEME="agnoster"
 autoload -U colors; colors
@@ -52,11 +59,11 @@ export LS_COLORS='rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;
 #export LS_COLORS='ow=6;96:tw=2;35:di=2;35'
 export CLICOLOR=true
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
-tmp_prompt="%F{green}[%n@%D{%m/%d %T}]%f "
+shorten_hostname="$(echo $(hostname)|cut -c1-4).."
+tmp_prompt="%F{green}[%n@${shorten_hostname}%D{%m/%d %T}]%f "
 tmp_rprompt="%{${fg[green]}%}[%~]%{${reset_color}%}"
 PROMPT=$tmp_prompt
 RPROMPT=$tmp_rprompt
-
 
 # ------------------------------
 # Other Settings
