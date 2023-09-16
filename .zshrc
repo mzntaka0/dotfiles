@@ -103,6 +103,9 @@ export PYENV_ROOT="${HOME}/.pyenv"
 export PATH=$(pyenv root)/shims:$PATH
 export PATH=$PATH:/usr/local/go/bin
 export PATH="${PATH}:${HOME}/.krew/bin"
+export MODULAR_HOME="/root/.modular"
+export PATH="/root/.modular/pkg/packages.modular.com_mojo/bin:$PATH"
+export MPICC="/bin/mpicc"
 source "$HOME/.rye/env"
 
 
