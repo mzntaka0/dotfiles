@@ -8,7 +8,7 @@ end
 
 config.color_scheme = 'Ubuntu'
 
-config.window_background_opacity = 0.93
+config.window_background_opacity = 0.95
 
 config.colors = {
   -- The default text color
@@ -18,7 +18,7 @@ config.colors = {
 
   -- Overrides the cell background color when the current cell is occupied by the
   -- cursor and the cursor style is set to Block
-  cursor_bg = '#52ad70',
+  cursor_bg = 'silver',
   -- Overrides the text color when the current cell is occupied by the cursor
   cursor_fg = 'black',
   -- Specifies the border color of the cursor when the cursor style is set to Block,
@@ -40,7 +40,7 @@ config.colors = {
   ansi = {
     'black',
     'maroon',
-    'green',
+    '#1b941b',  -- info
     '#969608',
     'navy',
     'purple',
@@ -52,7 +52,7 @@ config.colors = {
     'red',
     'lime',
     'yellow',
-    '#5677e3',
+    '#5677e3',  -- directory
     'fuchsia',
     'aqua',
     'white',
