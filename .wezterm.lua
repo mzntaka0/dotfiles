@@ -10,6 +10,11 @@ config.color_scheme = 'Ubuntu'
 
 config.window_background_opacity = 0.95
 
+config.initial_rows = 100
+config.initial_cols = 200
+
+config.hide_tab_bar_if_only_one_tab = true
+
 config.colors = {
   -- The default text color
   foreground = '#dbd9d9',
