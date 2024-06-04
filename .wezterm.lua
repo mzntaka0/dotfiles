@@ -8,6 +8,14 @@ end
 
 config.color_scheme = 'Ubuntu'
 
+-- config.font = wezterm.font("Ubuntu Mono", {weight="Regular", stretch="Normal", style="Normal"}) -- /usr/share/fonts/truetype/ubuntu/UbuntuMono-R.ttf, FontConfig
+config.font_size = 11.0
+config.font = wezterm.font("JetBrains Mono", {weight="Light", stretch="Normal", style="Normal"}) -- <built-in>, BuiltIn
+-- config.font = wezterm.font("Courier 10 Pitch", {weight="Regular", stretch="Normal", style="Normal"}) -- /usr/share/fonts/X11/Type1/c0419bt_.pfb, FontConfig
+
+
+
+
 config.window_background_opacity = 0.95
 
 config.initial_rows = 100
