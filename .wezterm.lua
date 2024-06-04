@@ -2,9 +2,20 @@ local wezterm = require 'wezterm'
 
 local config = {}
 
+local is_macos = wezterm.target_triple == 'x86_64-apple-darwin' or wezterm.target_triple == 'aarch64-apple-darwin'
+
+
 if wezterm.config_builder then
   config = wezterm.config_builder()
 end
+
+config.audible_bell = "Disabled"
+
+config.visual_bell = {
+    fade_in_duration_ms = 150,
+    fade_out_duration_ms = 150,
+    target = "CursorColor",
+}
 
 config.color_scheme = 'Ubuntu'
 
@@ -99,5 +110,18 @@ config.colors = {
   quick_select_match_bg = { AnsiColor = 'Navy' },
   quick_select_match_fg = { Color = '#ffffff' },
 }
+
+
+if is_macos then
+  local letters = "abcdefghijklmnopqrstuvwxyz"
+  config.keys = {}
+  for i = 1, #letters do
+    local letter = letters:sub(i,i)
+    table.insert(config.keys, {key=letter, mods="CMD", action=wezterm.action{SendString=string.char(1 + (letter:byte() - 97))}})
+  end
+
+  table.insert(config.keys, {key="V", mods="CMD|SHIFT", action=wezterm.action.PasteFrom("Clipboard")})
+  table.insert(config.keys, {key="C", mods="CMD|SHIFT", action=wezterm.action.CopyTo("Clipboard")})
+end
 
 return config
