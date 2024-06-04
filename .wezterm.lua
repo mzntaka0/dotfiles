@@ -9,6 +9,14 @@ if wezterm.config_builder then
   config = wezterm.config_builder()
 end
 
+config.audible_bell = "Disabled"
+
+config.visual_bell = {
+    fade_in_duration_ms = 150,
+    fade_out_duration_ms = 150,
+    target = "CursorColor",
+}
+
 config.color_scheme = 'Ubuntu'
 
 config.window_background_opacity = 0.95
@@ -107,15 +115,5 @@ if is_macos then
   table.insert(config.keys, {key="V", mods="CMD|SHIFT", action=wezterm.action.PasteFrom("Clipboard")})
   table.insert(config.keys, {key="C", mods="CMD|SHIFT", action=wezterm.action.CopyTo("Clipboard")})
 end
-
--- config.mouse_bindings = {
---     {
---         event = { Down = { streak = 1, button = "Right" } },
---         mods = "NONE",
---         action = act({ PasteFrom = "Clipboard"})
---     }
--- }
-
-
 
 return config
