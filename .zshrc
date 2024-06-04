@@ -87,6 +87,7 @@ alias zshrc='vi ~/.zshrc'
 alias gls="gls --color"
 alias ipm="sudo /usr/lib/inkdrop/resources/app/ipm/bin/ipm"
 alias k="kubectl"
+alias pbcopy='xsel --clipboard --input'
 #alias aws="sudo docker run --rm -it amazon/aws-cli"
 
 ### Exports ###

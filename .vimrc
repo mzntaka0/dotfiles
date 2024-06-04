@@ -135,12 +135,12 @@ nmap <space>eb <Cmd>CocCommand explorer --preset buffer<CR>
 nmap <space>el <Cmd>CocList explPresets<CR>
 
 
-let g:coc_global_extensions = ['coc-json', 'coc-tsserver', 'coc-jedi', 'coc-rust-analyzer', 'coc-highlight', 'coc-pairs', 'coc-toml', 'coc-pydocstring', 'coc-lists', 'coc-yaml', 'coc-vimlsp', 'coc-docker', 'coc-html', 'coc-markdownlint', 'coc-sh', 'coc-explorer', 'coc-css', '@yaegassy/coc-ruff', 'coc-biome']
+let g:coc_global_extensions = ['coc-json', 'coc-tsserver', 'coc-jedi', 'coc-rust-analyzer', 'coc-highlight', 'coc-pairs', 'coc-toml', 'coc-pydocstring', 'coc-lists', 'coc-yaml', 'coc-vimlsp', 'coc-docker', 'coc-html', 'coc-markdownlint', 'coc-sh', 'coc-explorer', 'coc-css', '@yaegassy/coc-ruff', 'coc-biome', 'coc-xml', 'coc-lua']
 
 let g:openbrowser_browser_commands = [ {'name': 'google-chrome-stable',  'args': ['{browser}', '{uri}']} ]
 
 let g:ale_linters = {'javascript': ['prettier', 'eslint', 'biome'], 'typescript': ['prettier', 'eslint', 'tslint', 'tsserver', 'typecheck', 'biome'], 'python': ['mypy', 'ruff'], 'rust': ['analyzer', 'clippy'], 'java': ['javac']}
-let g:ale_fixers = {'javascript': ['prettier', 'remove_trailing_lines', 'trim_whitespace'], 'typescript': ['prettier', 'biome', 'remove_trailing_lines', 'trim_whitespace'], 'python': ['black', 'ruff', 'remove_trailing_lines', 'trim_whitespace'], 'rust': ['rustfmt', 'remove_trailing_lines', 'trim_whitespace']}
+let g:ale_fixers = {'javascript': ['prettier', 'remove_trailing_lines', 'trim_whitespace'], 'typescript': ['prettier', 'remove_trailing_lines', 'trim_whitespace'], 'python': ['black', 'ruff', 'remove_trailing_lines', 'trim_whitespace'], 'rust': ['rustfmt', 'remove_trailing_lines', 'trim_whitespace']}
 let g:ale_fix_on_save = 1
 let g:ale_completion_enabled = 0
 "let g:ale_hover_to_preview = 1
@@ -161,6 +161,8 @@ set updatetime=300
 " Always show the signcolumn, otherwise it would shift the text each time
 " diagnostics appear/become resolved.
 set signcolumn=auto
+
+set mmp=10000
 
 inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
@@ -957,6 +959,7 @@ if has("autocmd")
   autocmd FileType json        setlocal sw=2 sts=2 ts=2 et
   "autocmd FileType html        setlocal sw=4 sts=4 ts=4 et
   autocmd FileType css         setlocal sw=2 sts=2 ts=2 et
+  autocmd FileType xml         setlocal sw=2 sts=2 ts=2 et
   "autocmd FileType scss        setlocal sw=4 sts=4 ts=4 et
   "autocmd FileType sass        setlocal sw=4 sts=4 ts=4 et
   autocmd FileType javascript  setlocal sw=2 sts=2 ts=2 et
