@@ -12,20 +12,14 @@ end
 config.audible_bell = "Disabled"
 
 config.visual_bell = {
-    fade_in_duration_ms = 150,
-    fade_out_duration_ms = 150,
-    target = "CursorColor",
+  fade_in_duration_ms = 150,
+  fade_out_duration_ms = 150,
+  target = "CursorColor",
 }
 
 config.color_scheme = 'Ubuntu'
 
--- config.font = wezterm.font("Ubuntu Mono", {weight="Regular", stretch="Normal", style="Normal"}) -- /usr/share/fonts/truetype/ubuntu/UbuntuMono-R.ttf, FontConfig
 config.font_size = 11.0
-config.font = wezterm.font("JetBrains Mono", {weight="Light", stretch="Normal", style="Normal"}) -- <built-in>, BuiltIn
--- config.font = wezterm.font("Courier 10 Pitch", {weight="Regular", stretch="Normal", style="Normal"}) -- /usr/share/fonts/X11/Type1/c0419bt_.pfb, FontConfig
-
-
-
 
 config.window_background_opacity = 0.95
 
@@ -122,6 +116,7 @@ if is_macos then
 
   table.insert(config.keys, {key="V", mods="CMD|SHIFT", action=wezterm.action.PasteFrom("Clipboard")})
   table.insert(config.keys, {key="C", mods="CMD|SHIFT", action=wezterm.action.CopyTo("Clipboard")})
+  config.window_background_opacity = 0.80
 end
 
 return config
