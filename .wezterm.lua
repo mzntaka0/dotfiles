@@ -20,6 +20,7 @@ config.visual_bell = {
 config.color_scheme = 'Ubuntu'
 
 config.font_size = 11.0
+config.font = wezterm.font("Hack Nerd Font Mono", {weight="Regular", stretch="Normal", style="Normal"})
 
 config.window_background_opacity = 0.95
 
@@ -116,7 +117,7 @@ if is_macos then
 
   table.insert(config.keys, {key="V", mods="CMD|SHIFT", action=wezterm.action.PasteFrom("Clipboard")})
   table.insert(config.keys, {key="C", mods="CMD|SHIFT", action=wezterm.action.CopyTo("Clipboard")})
-  config.window_background_opacity = 0.80
+  config.window_background_opacity = 0.88
 end
 
 return config
