@@ -56,7 +56,7 @@ Plug 'maxmellon/vim-jsx-pretty'
 Plug 'jparise/vim-graphql'
 Plug 'mbbill/undotree'
 Plug 'udalov/kotlin-vim'
-Plug 'w0rp/ale'
+"Plug 'w0rp/ale'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'mattn/sonictemplate-vim'
 Plug 'codeindulgence/vim-tig'
@@ -135,24 +135,21 @@ nmap <space>eb <Cmd>CocCommand explorer --preset buffer<CR>
 nmap <space>el <Cmd>CocList explPresets<CR>
 
 
-let g:coc_global_extensions = ['coc-json', 'coc-tsserver', 'coc-jedi', 'coc-rust-analyzer', 'coc-highlight', 'coc-pairs', 'coc-toml', 'coc-pydocstring', 'coc-lists', 'coc-yaml', 'coc-vimlsp', 'coc-docker', 'coc-html', 'coc-markdownlint', 'coc-sh', 'coc-explorer', 'coc-css', '@yaegassy/coc-ruff', 'coc-biome', 'coc-xml', 'coc-lua']
+let g:coc_global_extensions = ['coc-json', 'coc-tsserver', 'coc-rust-analyzer', 'coc-highlight', 'coc-pairs', 'coc-toml', 'coc-pydocstring', 'coc-lists', 'coc-yaml', 'coc-vimlsp', 'coc-docker', 'coc-html', 'coc-markdownlint', 'coc-sh', 'coc-explorer', 'coc-css', '@yaegassy/coc-ruff', '@yaegassy/coc-black-formatter', 'coc-biome', 'coc-xml', 'coc-lua']
 
 let g:openbrowser_browser_commands = [ {'name': 'google-chrome-stable',  'args': ['{browser}', '{uri}']} ]
 
-let g:ale_linters = {'javascript': ['prettier', 'eslint', 'biome'], 'typescript': ['prettier', 'eslint', 'tslint', 'tsserver', 'typecheck', 'biome'], 'python': ['mypy', 'ruff'], 'rust': ['analyzer', 'clippy'], 'java': ['javac']}
-let g:ale_fixers = {'javascript': ['prettier', 'remove_trailing_lines', 'trim_whitespace'], 'typescript': ['prettier', 'remove_trailing_lines', 'trim_whitespace'], 'python': ['black', 'ruff', 'remove_trailing_lines', 'trim_whitespace'], 'rust': ['rustfmt', 'remove_trailing_lines', 'trim_whitespace']}
-let g:ale_fix_on_save = 1
-let g:ale_completion_enabled = 0
-"let g:ale_hover_to_preview = 1
-"let g:ale_hover_to_floating_preview = 1
-let g:ale_floating_preview = 1
-"let g:ale_completion_autoimport = 1
-let g:ale_sign_column_always = 0
-
-let g:ale_python_mypy_options = '--ignore-missing-imports'
-
-let g:rustfmt_autosave = 1
-let g:ale_rust_cargo_use_clippy = executable('cargo-clippy')
+" let g:ale_linters = {'javascript': ['prettier', 'eslint', 'biome'], 'typescript': ['prettier', 'eslint', 'tslint', 'tsserver', 'typecheck', 'biome'], 'python': ['mypy', 'ruff'], 'rust': ['analyzer', 'clippy'], 'java': ['javac']}
+" let g:ale_fixers = {'javascript': ['prettier', 'remove_trailing_lines', 'trim_whitespace'], 'typescript': ['prettier', 'remove_trailing_lines', 'trim_whitespace'], 'python': ['black', 'ruff', 'remove_trailing_lines', 'trim_whitespace'], 'rust': ['rustfmt', 'remove_trailing_lines', 'trim_whitespace']}
+" let g:ale_fix_on_save = 1
+" let g:ale_completion_enabled = 0
+" let g:ale_floating_preview = 1
+" let g:ale_sign_column_always = 0
+" 
+" let g:ale_python_mypy_options = '--ignore-missing-imports'
+" 
+" let g:rustfmt_autosave = 1
+" let g:ale_rust_cargo_use_clippy = executable('cargo-clippy')
 
 " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
 " delays and poor user experience.
