@@ -56,7 +56,7 @@ Plug 'maxmellon/vim-jsx-pretty'
 Plug 'jparise/vim-graphql'
 Plug 'mbbill/undotree'
 Plug 'udalov/kotlin-vim'
-"Plug 'w0rp/ale'
+Plug 'w0rp/ale'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'mattn/sonictemplate-vim'
 Plug 'codeindulgence/vim-tig'
@@ -127,6 +127,7 @@ let g:coc_explorer_global_presets = {
 
 " Use preset argument to open it
 nmap <space>ed <Cmd>CocCommand explorer --preset .vim<CR>
+nmap <space>ev <Cmd>CocCommand explorer --preset .vimrc<CR>
 nmap <space>ef <Cmd>CocCommand explorer --preset floating<CR>
 nmap <space>ec <Cmd>CocCommand explorer --preset cocConfig<CR>
 nmap <space>eb <Cmd>CocCommand explorer --preset buffer<CR>
@@ -135,13 +136,20 @@ nmap <space>eb <Cmd>CocCommand explorer --preset buffer<CR>
 nmap <space>el <Cmd>CocList explPresets<CR>
 
 
-let g:coc_global_extensions = ['coc-json', 'coc-tsserver', 'coc-rust-analyzer', 'coc-highlight', 'coc-pairs', 'coc-toml', 'coc-pydocstring', 'coc-lists', 'coc-yaml', 'coc-vimlsp', 'coc-docker', 'coc-html', 'coc-markdownlint', 'coc-sh', 'coc-explorer', 'coc-css', '@yaegassy/coc-ruff', '@yaegassy/coc-black-formatter', 'coc-biome', 'coc-xml', 'coc-lua']
+let g:coc_global_extensions = ['coc-json', 'coc-tsserver', 'coc-rust-analyzer', 'coc-highlight', 'coc-pairs', 'coc-toml', 'coc-pydocstring', 'coc-lists', 'coc-yaml', 'coc-vimlsp', 'coc-docker', 'coc-html', 'coc-markdownlint', 'coc-sh', 'coc-explorer', 'coc-css', '@yaegassy/coc-ruff', '@yaegassy/coc-black-formatter', 'coc-jedi', 'coc-biome', 'coc-xml', 'coc-lua']
+
+let g:coc_enable_completion_detail = 1
+let g:coc_default_semantic_highlight_groups = 1
+
+
 
 let g:openbrowser_browser_commands = [ {'name': 'google-chrome-stable',  'args': ['{browser}', '{uri}']} ]
 
 " let g:ale_linters = {'javascript': ['prettier', 'eslint', 'biome'], 'typescript': ['prettier', 'eslint', 'tslint', 'tsserver', 'typecheck', 'biome'], 'python': ['mypy', 'ruff'], 'rust': ['analyzer', 'clippy'], 'java': ['javac']}
 " let g:ale_fixers = {'javascript': ['prettier', 'remove_trailing_lines', 'trim_whitespace'], 'typescript': ['prettier', 'remove_trailing_lines', 'trim_whitespace'], 'python': ['black', 'ruff', 'remove_trailing_lines', 'trim_whitespace'], 'rust': ['rustfmt', 'remove_trailing_lines', 'trim_whitespace']}
-" let g:ale_fix_on_save = 1
+let g:ale_fixers = {'javascript': ['trim_whitespace', 'remove_trailing_lines', 'trim_whitespace'], 'typescript': ['remove_trailing_lines', 'trim_whitespace'], 'python': ['remove_trailing_lines', 'trim_whitespace', 'isort'], 'rust': ['remove_trailing_lines', 'trim_whitespace']}
+let g:ale_fix_on_save = 1
+let g:ale_enabled = 0
 " let g:ale_completion_enabled = 0
 " let g:ale_floating_preview = 1
 " let g:ale_sign_column_always = 0
@@ -282,28 +290,28 @@ let g:user_emmet_leader_key=','
 "*****************************************************************************
 
 " python
-"" Python Bundle
-Plug 'davidhalter/jedi-vim'
-Plug 'raimon49/requirements.txt.vim', {'for': 'requirements'}
-Plug 'andviro/flake8-vim'
-
-let g:jedi#completions_command = "<Tab>"
-
-let g:PyFlakeDisabledMessages = 'E501,W601,E265,E266,E123,F841,C901'
-let g:PyFlakeCWindow = 0
-let g:PyFlakeMaxLineLength = 5
-let g:PyFlakeCheckers = 'pep8,mccabe,flake8,frosted,mypy'
-let g:PyFlakeOnWrite = 1
-
-
-let g:pep8_ignore="E501,W601,E265,E266,E741,E731"
-let g:pymode_lint_ignore = "E731,W"
+" Python Bundle
+"Plug 'davidhalter/jedi-vim'
+"Plug 'raimon49/requirements.txt.vim', {'for': 'requirements'}
+"Plug 'andviro/flake8-vim'
+"
+"let g:jedi#completions_command = "<Tab>"
+"
+"let g:PyFlakeDisabledMessages = 'E501,W601,E265,E266,E123,F841,C901'
+"let g:PyFlakeCWindow = 0
+"let g:PyFlakeMaxLineLength = 5
+"let g:PyFlakeCheckers = 'pep8,mccabe,flake8,frosted,mypy'
+"let g:PyFlakeOnWrite = 1
+"
+"
+"let g:pep8_ignore="E501,W601,E265,E266,E741,E731"
+"let g:pymode_lint_ignore = "E731,W"
 
 
 "*****************************************************************************
 "*****************************************************************************
 
-"" Include user's extra bundle
+" Include user's extra bundle
 if filereadable(expand("~/.vimrc.local.bundles"))
   source ~/.vimrc.local.bundles
 endif
@@ -319,7 +327,7 @@ filetype indent on
 "*****************************************************************************
 "" Basic Setup
 "*****************************************************************************"
-"" Encoding
+" Encoding
 set encoding=utf-8
 set fileencoding=utf-8
 set fileencodings=utf-8
@@ -332,28 +340,28 @@ set undodir=/tmp//
 set autochdir
 set colorcolumn=79
 
-"" Fix backspace indent
+" Fix backspace indent
 set backspace=indent,eol,start
 
-"" Tabs. May be overriten by autocmd rules
+" Tabs. May be overriten by autocmd rules
 set tabstop=4
 set softtabstop=0
 set shiftwidth=4
 set expandtab
 
-"" Map leader to ,
+" Map leader to ,
 let mapleader=','
 
-"" Enable hidden buffers
+" Enable hidden buffers
 set hidden
 
-"" Searching
+" Searching
 set hlsearch
 set incsearch
 set ignorecase
 set smartcase
 
-"" Directories for swp files
+" Directories for swp files
 set nobackup
 set noswapfile
 
@@ -553,24 +561,24 @@ nnoremap <leader>ss :SaveSession<Space>
 nnoremap <leader>sd :DeleteSession<CR>
 nnoremap <leader>sc :CloseSession<CR>
 
-"" Tabs
+" Tabs
 nnoremap <Tab> gt
 nnoremap <S-Tab> gT
 nnoremap <silent> <S-t> :tabnew<CR>
 
-"" Set working directory
+" Set working directory
 nnoremap <leader>. :lcd %:p:h<CR>
 
-"" Opens an edit command with the path of the currently edited file filled in
+" Opens an edit command with the path of the currently edited file filled in
 noremap <Leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
 
-"" Opens a tab edit command with the path of the currently edited file filled
+" Opens a tab edit command with the path of the currently edited file filled
 noremap <Leader>te :tabe <C-R>=expand("%:p:h") . "/" <CR>
 inoremap <C-l> <Right>
 
 nnoremap U :UndotreeToggle<cr>
 
-"" fzf.vim
+" fzf.vim
 set wildmode=list:longest,list:full
 set wildignore+=*.o,*.obj,.git,*.rbc,*.pyc,__pycache__,node_modules
 let $FZF_DEFAULT_COMMAND =  "find * -path '*/\.*' -prune -o -path 'node_modules/**' -prune -o -path 'target/**' -prune -o -path 'dist/**' -prune -o  -type f -print -o -type l -print 2> /dev/null"
@@ -858,8 +866,8 @@ nnoremap O :<C-u>call append(expand('.'), '')<Cr>j
 
 cnoremap <C-b> <Left>
 cnoremap <C-f> <Right>
-cnoremap <C-n> <Down>
-cnoremap <C-p> <Up>
+"cnoremap <C-n> <Down>
+"cnoremap <C-p> <Up>
 cnoremap <C-a> <Home>
 cnoremap <C-e> <End>
 cnoremap <C-d> <Del>
@@ -868,7 +876,6 @@ cnoremap <C-d> <Del>
 "inoremap [<Enter> []<Left>
 "inoremap (<Enter> ()<Left>
 "inoremap '<Enter> ''<Left>
-"inoremap "<Enter> ""<Left>
 "inoremap <C-l> <Right>
 
 
