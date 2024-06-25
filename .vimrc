@@ -136,7 +136,7 @@ nmap <space>eb <Cmd>CocCommand explorer --preset buffer<CR>
 nmap <space>el <Cmd>CocList explPresets<CR>
 
 
-let g:coc_global_extensions = ['coc-json', 'coc-tsserver', 'coc-rust-analyzer', 'coc-highlight', 'coc-pairs', 'coc-toml', 'coc-pydocstring', 'coc-lists', 'coc-yaml', 'coc-vimlsp', 'coc-docker', 'coc-html', 'coc-markdownlint', 'coc-sh', 'coc-explorer', 'coc-css', '@yaegassy/coc-ruff', '@yaegassy/coc-black-formatter', 'coc-jedi', 'coc-biome', 'coc-xml', 'coc-lua']
+let g:coc_global_extensions = ['coc-json', 'coc-tsserver', 'coc-rust-analyzer', 'coc-highlight', 'coc-pairs', 'coc-toml', 'coc-pydocstring', 'coc-lists', 'coc-yaml', 'coc-vimlsp', 'coc-docker', 'coc-html', 'coc-markdownlint', 'coc-sh', 'coc-explorer', 'coc-css', '@yaegassy/coc-ruff', '@yaegassy/coc-black-formatter', 'coc-jedi', 'coc-biome', 'coc-xml', 'coc-lua', 'coc-prettier', 'coc-eslint']
 
 let g:coc_enable_completion_detail = 1
 let g:coc_default_semantic_highlight_groups = 1
@@ -147,7 +147,7 @@ let g:openbrowser_browser_commands = [ {'name': 'google-chrome-stable',  'args':
 
 " let g:ale_linters = {'javascript': ['prettier', 'eslint', 'biome'], 'typescript': ['prettier', 'eslint', 'tslint', 'tsserver', 'typecheck', 'biome'], 'python': ['mypy', 'ruff'], 'rust': ['analyzer', 'clippy'], 'java': ['javac']}
 " let g:ale_fixers = {'javascript': ['prettier', 'remove_trailing_lines', 'trim_whitespace'], 'typescript': ['prettier', 'remove_trailing_lines', 'trim_whitespace'], 'python': ['black', 'ruff', 'remove_trailing_lines', 'trim_whitespace'], 'rust': ['rustfmt', 'remove_trailing_lines', 'trim_whitespace']}
-let g:ale_fixers = {'javascript': ['trim_whitespace', 'remove_trailing_lines', 'trim_whitespace'], 'typescript': ['remove_trailing_lines', 'trim_whitespace'], 'python': ['remove_trailing_lines', 'trim_whitespace', 'isort'], 'rust': ['remove_trailing_lines', 'trim_whitespace']}
+let g:ale_fixers = {'javascript': ['trim_whitespace', 'remove_trailing_lines', 'trim_whitespace', 'prettier'], 'typescript': ['remove_trailing_lines', 'trim_whitespace', 'prettier'], 'python': ['remove_trailing_lines', 'trim_whitespace', 'isort'], 'rust': ['remove_trailing_lines', 'trim_whitespace']}
 let g:ale_fix_on_save = 1
 let g:ale_enabled = 0
 " let g:ale_completion_enabled = 0

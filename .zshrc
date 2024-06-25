@@ -175,11 +175,13 @@ function gdrive_download () {
 eval "$(pyenv init -)"
 
 # tmux
-if [ $SHLVL = 1 ]; then
-    alias tmux="tmux -2 attach || tmux -2 new-session \; source-file ~/.tmux/new-session"
-fi
-if [ $SHLVL = 1 ]; then
-    tmux
+if [[ $EUID -ne 0 ]]; then
+    if [ $SHLVL = 1 ]; then
+        alias tmux="tmux -2 attach || tmux -2 new-session \; source-file ~/.tmux/new-session"
+    fi
+    if [ $SHLVL = 1 ]; then
+        tmux
+    fi
 fi
 
 function precmd() {
