@@ -1013,3 +1013,6 @@ function! XTermPasteBegin()
 endfunction
 
 inoremap <special> <expr> <Esc>[200~ XTermPasteBegin()
+
+autocmd VimEnter,InsertEnter * set pastetoggle=<F2>
+autocmd TextYankPost * if v:event.operator is 'y' | execute 'normal! gg=G' | endif

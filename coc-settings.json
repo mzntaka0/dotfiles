@@ -1,4 +1,7 @@
 {
   "suggest.noselect": true,
   "coc.preferences.formatOnType": true,
+  "ruff.nativeServer": true,
+  "ruff.autoFixOnSave": true,
+  "coc.preferences.formatOnSave": true
 }
