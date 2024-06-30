@@ -201,3 +201,6 @@ export EDITOR=vim
 #eval "$(direnv hook zsh)"
 
 export PATH="${PATH}:${HOME}/.krew/bin"
+
+# Created by `userpath` on 2024-06-25 15:59:56
+export PATH="$PATH:/root/.local/share/hatch/pythons/3.11/python/bin"
