@@ -3,5 +3,6 @@
   "coc.preferences.formatOnType": true,
   "ruff.nativeServer": true,
   "ruff.autoFixOnSave": true,
-  "coc.preferences.formatOnSave": true
+  "coc.preferences.formatOnSave": true,
+  "mypy-type-checker.enable": false
 }

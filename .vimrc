@@ -57,7 +57,7 @@ Plug 'jparise/vim-graphql'
 Plug 'mbbill/undotree'
 Plug 'udalov/kotlin-vim'
 Plug 'w0rp/ale'
-Plug 'ctrlpvim/ctrlp.vim'
+"Plug 'ctrlpvim/ctrlp.vim'
 Plug 'mattn/sonictemplate-vim'
 Plug 'codeindulgence/vim-tig'
 Plug 'frazrepo/vim-rainbow'
@@ -81,6 +81,72 @@ Plug 'lambdalisue/fern-git-status.vim'
 Plug 'wagnerf42/vim-clippy'
 Plug 'czheo/mojo.vim'
 Plug 'ConradIrwin/vim-bracketed-paste'
+Plug 'lilydjwg/colorizer'
+Plug 'antoinemadec/coc-fzf'
+Plug 'itchyny/lightline.vim'
+Plug 'liuchengxu/vista.vim'
+Plug 'NoahTheDuke/vim-just'
+Plug 'github/copilot.vim'
+
+" Deps
+Plug 'stevearc/dressing.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'MunifTanjim/nui.nvim'
+Plug 'MeanderingProgrammer/render-markdown.nvim'
+
+" Optional deps
+Plug 'hrsh7th/nvim-cmp'
+Plug 'nvim-tree/nvim-web-devicons' "or Plug 'echasnovski/mini.icons'
+Plug 'HakonHarnes/img-clip.nvim'
+Plug 'zbirenbaum/copilot.lua'
+
+" Yay, pass source=true if you want to build from source
+Plug 'yetone/avante.nvim', { 'branch': 'main', 'do': 'make' }
+
+function! NearestMethodOrFunction() abort
+  return get(b:, 'vista_nearest_method_or_function', '')
+endfunction
+
+set statusline+=%{NearestMethodOrFunction()}
+
+" By default vista.vim never run if you don't call it explicitly.
+"
+" If you want to show the nearest function in your statusline automatically,
+" you can add the following line to your vimrc
+autocmd VimEnter * call vista#RunForNearestMethodOrFunction()
+
+let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
+
+" Executive used when opening vista sidebar without specifying it.
+" See all the avaliable executives via `:echo g:vista#executives`.
+let g:vista_default_executive = 'coc'
+
+let g:lightline = {
+      \ 'colorscheme': 'landscape',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ],
+      \             [ 'vista' ],
+      \           ]
+      \ },
+      \ 'component_function': {
+      \   'gitbranch': 'fugitive#head',
+      \   'vista': 'NearestMethodOrFunction',
+      \ },
+      \ }
+function! NearestMethodOrFunction() abort
+  return get(b:, 'vista_nearest_method_or_function', '')
+endfunction
+
+let g:vista_fzf_preview = ['right:50%']
+" Ensure you have installed some decent font to show these pretty symbols, then you can enable icon for the kind.
+let g:vista#renderer#enable_icon = 1
+
+" The default icons can't be suitable for all the filetypes, you can extend it as you wish.
+let g:vista#renderer#icons = {
+\   "function": "\uf794",
+\   "variable": "\uf71b",
+\  }
 
 
 let g:coc_explorer_global_presets = {
@@ -138,7 +204,7 @@ nmap <space>eb <Cmd>CocCommand explorer --preset buffer<CR>
 nmap <space>el <Cmd>CocList explPresets<CR>
 
 
-let g:coc_global_extensions = ['coc-json', 'coc-tsserver', 'coc-rust-analyzer', 'coc-highlight', 'coc-pairs', 'coc-toml', 'coc-pydocstring', 'coc-lists', 'coc-yaml', 'coc-vimlsp', 'coc-docker', 'coc-html', 'coc-markdownlint', 'coc-sh', 'coc-explorer', 'coc-css', '@yaegassy/coc-ruff', 'coc-jedi', 'coc-biome', 'coc-xml', 'coc-lua', 'coc-prettier', 'coc-eslint']
+let g:coc_global_extensions = ['coc-json', 'coc-tsserver', 'coc-rust-analyzer', 'coc-highlight', 'coc-pairs', 'coc-toml', 'coc-pydocstring', 'coc-lists', 'coc-yaml', 'coc-vimlsp', 'coc-docker', 'coc-html', 'coc-markdownlint', 'coc-sh', 'coc-explorer', 'coc-css', '@yaegassy/coc-ruff', 'coc-jedi', 'coc-biome', 'coc-xml', 'coc-lua', 'coc-prettier', 'coc-eslint', '@yaegassy/coc-mypy', 'coc-snippets', 'coc-java', 'coc-tabnine', 'coc-solargraph']
 
 let g:coc_enable_completion_detail = 1
 let g:coc_default_semantic_highlight_groups = 1
@@ -149,7 +215,7 @@ let g:openbrowser_browser_commands = [ {'name': 'google-chrome-stable',  'args':
 
 " let g:ale_linters = {'javascript': ['prettier', 'eslint', 'biome'], 'typescript': ['prettier', 'eslint', 'tslint', 'tsserver', 'typecheck', 'biome'], 'python': ['mypy', 'ruff'], 'rust': ['analyzer', 'clippy'], 'java': ['javac']}
 " let g:ale_fixers = {'javascript': ['prettier', 'remove_trailing_lines', 'trim_whitespace'], 'typescript': ['prettier', 'remove_trailing_lines', 'trim_whitespace'], 'python': ['black', 'ruff', 'remove_trailing_lines', 'trim_whitespace'], 'rust': ['rustfmt', 'remove_trailing_lines', 'trim_whitespace']}
-let g:ale_fixers = {'javascript': ['trim_whitespace', 'remove_trailing_lines', 'trim_whitespace', 'prettier'], 'typescript': ['remove_trailing_lines', 'trim_whitespace', 'prettier'], 'python': ['ruff', 'black', 'remove_trailing_lines', 'trim_whitespace', 'isort'], 'rust': ['remove_trailing_lines', 'trim_whitespace']}
+let g:ale_fixers = {'javascript': ['trim_whitespace', 'remove_trailing_lines', 'trim_whitespace', 'prettier'], 'typescript': ['remove_trailing_lines', 'trim_whitespace', 'prettier'], 'python': ['ruff','remove_trailing_lines', 'trim_whitespace'], 'rust': ['remove_trailing_lines', 'trim_whitespace']}
 "let g:ale_python_ruff_use_global = 1
 let g:ale_fix_on_save = 1
 let g:ale_enabled = 0
@@ -174,11 +240,15 @@ set mmp=10000
 
 inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
+tnoremap <expr> <Esc> (&filetype == "fzf") ? "<Esc>" : "<c-\><c-n>"
+noremap <C-l> :CocList<CR>
+
 " GoTo code navigation.
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
+nmap <silent>dr <Plug>(coc-rename)
 
 " Use <Tab> and <S-Tab> to navigate the completion list
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
@@ -230,6 +300,64 @@ augroup END
 "let g:ale_linter_aliases = {'typescriptreact': 'typescript'}
 
 autocmd FileType typescript setlocal formatprg=prettier\ --parser\ typescript
+
+let g:copilot_filetypes = #{
+  \ c: v:true,
+  \ clojure: v:true,
+  \ coffeescript: v:true,
+  \ cpp: v:true,
+  \ crystal: v:true,
+  \ csharp: v:true,
+  \ css: v:true,
+  \ dart: v:true,
+  \ ddu-ff-filter: v:false,
+  \ dockerfile: v:true,
+  \ elixir: v:true,
+  \ erlang: v:true,
+  \ fsharp: v:true,
+  \ gitcommit: v:true,
+  \ go: v:true,
+  \ graphql: v:true,
+  \ haskell: v:true,
+  \ html: v:true,
+  \ java: v:true,
+  \ javascript: v:true,
+  \ json: v:true,
+  \ jsx: v:true,
+  \ julia: v:true,
+  \ kotlin: v:true,
+  \ less: v:true,
+  \ lua: v:true,
+  \ makefile: v:true,
+  \ markdown: v:true,
+  \ matlab: v:true,
+  \ moonscript: v:true,
+  \ nim: v:true,
+  \ ocaml: v:true,
+  \ octave: v:true,
+  \ perl: v:true,
+  \ php: v:true,
+  \ python: v:true,
+  \ r: v:true,
+  \ racket: v:true,
+  \ ruby: v:true,
+  \ rust: v:true,
+  \ scala: v:true,
+  \ scheme: v:true,
+  \ scss: v:true,
+  \ sh: v:true,
+  \ sql: v:true,
+  \ svelte: v:true,
+  \ swift: v:true,
+  \ text: v:true,
+  \ toml: v:true,
+  \ tsx: v:true,
+  \ typescript: v:true,
+  \ vim: v:true,
+  \ vue: v:true,
+  \ yaml: v:true }
+
+
 
 " for lsp
 let g:lsp_diagnostics_enabled = 0
@@ -542,7 +670,7 @@ set autoread
 "*****************************************************************************
 "" Mappings
 "*****************************************************************************
-map ; :Files<CR>
+"map ; :Files<CR>
 
 "" Split
 noremap <Leader>h :<C-u>split<CR>
@@ -656,10 +784,10 @@ noremap <leader>c :bd<CR>
 nnoremap <silent> <leader><space> :noh<cr>
 
 "" Switching windows
-noremap <C-j> <C-w>j
-noremap <C-k> <C-w>k
-noremap <C-l> <C-w>l
-noremap <C-h> <C-w>h
+"noremap <C-j> <C-w>j
+"noremap <C-k> <C-w>k
+"noremap <C-l> <C-w>l
+"noremap <C-h> <C-w>h
 
 "" Vmap for maintain Visual Mode after shifting > and <
 vmap < <gv
@@ -1016,3 +1144,4 @@ inoremap <special> <expr> <Esc>[200~ XTermPasteBegin()
 
 autocmd VimEnter,InsertEnter * set pastetoggle=<F2>
 autocmd TextYankPost * if v:event.operator is 'y' | execute 'normal! gg=G' | endif
+

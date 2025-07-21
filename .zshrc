@@ -108,7 +108,6 @@ export PATH="${PATH}:${HOME}/.krew/bin"
 export MODULAR_HOME="/root/.modular"
 export PATH="/root/.modular/pkg/packages.modular.com_mojo/bin:$PATH"
 export MPICC="/bin/mpicc"
-source "$HOME/.rye/env"
 
 
 
@@ -198,9 +197,29 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 export EDITOR=vim
-#eval "$(direnv hook zsh)"
+eval "$(direnv hook zsh)"
 
 export PATH="${PATH}:${HOME}/.krew/bin"
 
 # Created by `userpath` on 2024-06-25 15:59:56
 export PATH="$PATH:/root/.local/share/hatch/pythons/3.11/python/bin"
+
+# Created by `userpath` on 2024-07-16 14:03:48
+export PATH="$PATH:/root/.local/share/hatch/pythons/3.7/python/install/bin"
+
+function yy() {
+	tmp="$(mktemp -t "yazi-cwd.XXXXX")"
+	yazi --cwd-file="$tmp"
+	if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+		cd -- "$cwd"
+	fi
+	rm -f -- "$tmp"
+}
+
+PATH="/usr/local/cuda/bin:$PATH"
+LD_LIBRARY_PATH="/usr/local/cuda/lib64:$LD_LIBRARY_PATH"
+eval "$(/home/mzntaka0/.local/bin/mise activate --shims zsh)"
+export PATH="$HOME/.local/bin/mise/shims:/root/.local/share/mise/shims:$PATH"
+
+eval "$(starship init zsh)"
+
