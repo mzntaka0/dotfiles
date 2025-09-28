@@ -1,8 +1,13 @@
 {
   "suggest.noselect": true,
   "coc.preferences.formatOnType": true,
+  "coc.preferences.formatOnSave": true,
+  "python.formatting.provider": "ruff",
   "ruff.nativeServer": true,
   "ruff.autoFixOnSave": true,
-  "coc.preferences.formatOnSave": true,
-  "mypy-type-checker.enable": false
+  "mypy-type-checker.enable": false,
+  "prettier.useTabs": false,
+  "prettier.tabWidth": 2,
+  "biome.requireConfiguration": true,
+  "biome.enable": true
 }

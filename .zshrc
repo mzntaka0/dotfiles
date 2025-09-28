@@ -222,4 +222,8 @@ eval "$(/home/mzntaka0/.local/bin/mise activate --shims zsh)"
 export PATH="$HOME/.local/bin/mise/shims:/root/.local/share/mise/shims:$PATH"
 
 eval "$(starship init zsh)"
+export STARSHIP_CONFIG="$HOME/.config/starship.toml"
+export TERM="xterm-256color"
 
+# Turso
+export PATH="$PATH:/root/.turso"

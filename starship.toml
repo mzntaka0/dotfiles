@@ -1,0 +1,188 @@
+#format = """
+#[$os](#9A348E)$username$hostname$localip[](fg:#9A348E bg:#DA627D)$shlvl$singularity$kubernetes$nats$vcsh$fossil_branch$fossil_metrics$git_branch$git_commit$git_state$git_metrics$git_status$hg_branch$pijul_channel$docker_context$package$bun$c$cmake$cobol$cpp$daml$dart$deno$dotnet$elixir$elm$erlang$fennel$gleam$golang$gradle$haskell$haxe$helm$java$julia$kotlin$lua$mojo$nim$nodejs$ocaml$odin$opa$perl$php$pulumi$purescript$python$quarto$raku$rlang$red$ruby$rust$scala$solidity$swift$terraform$typst$vlang$vagrant$zig$buf$guix_shell$nix_shell$conda$pixi$meson$spack$memory_usage$aws$gcloud$openstack$azure$direnv$env_var$mise$crystal$custom$sudo$cmd_duration$line_break$jobs$battery$time$status$container$netns$shell$character
+#"""
+#
+#right_format = """
+#$directory
+#"""
+#
+#
+#add_newline = false
+#
+#[os]
+#format = "[$symbol]($style)"
+#style = 'fg:#ffffff bg:#9A348E'
+#disabled = false
+#
+#[os.symbols]
+#Macos = "  "  # nf-fa-apple
+#Ubuntu = "  " # nf-linux-ubuntu
+#Debian = "  " # nf-linux-debian
+#
+#[username]
+#show_always = true
+#style_user = "bg:#9A348E"
+#style_root = "bg:#9A348E"
+#format = '[$user ]($style)'
+#
+#
+#
+#[directory]
+#truncation_length = 6
+#truncation_symbol = ' '                                 # nf-fa-folder_open
+#truncate_to_repo = true
+#home_symbol = ' ~'                                      # nf-costum-home
+#style = 'fg:#7aa2f7 bg:#1a1b26'
+#read_only = ' 󰌾 '                                        # nf-md-lock
+#read_only_style = 'fg:#f7768e bg:#1a1b26'
+#format = '[$path]($style)[$read_only]($read_only_style)'
+#
+#
+#[time]
+#disabled = false
+#time_format = "%R"                         # Hour:Minute Format
+#style = "bg:#33658A"
+#format = '[[ $time ](bg:#33658A)]($style)'
+#
+#
+#[package]
+#disabled = true
+
+
+#### icon
+# nf-ple-left_half_circle_thick
+# nf-pl-left_hard_divider
+# nf-pl-left_hard_divider
+# nf-pl-right_hard_divider
+# nf-ple-right_half_circle_thick
+
+format = """
+$os\
+$hostname\
+[ ](fg:#7aa2f7 bg:#1a1b26)\
+$direnv\
+$directory\
+$git_branch\
+$git_status\
+$git_metrics\
+[](fg:#1a1b26)\
+$fill\
+[](fg:#1a1b26)\
+$conda\
+[](fg:#9ece6a bg:#1a1b26)\
+$python\
+[](fg:#9ece6a)\
+\n$character\
+"""
+
+right_format = """
+$cmd_duration
+$lua
+$rust
+$python
+$nodejs
+$time
+"""
+
+[os]
+format = "[$symbol]($style)"
+style = 'fg:#1a1b26 bg:#7aa2f7'
+disabled = false
+
+[hostname]
+ssh_only = true
+#ssh_symbol = "🌐"
+ssh_symbol = ""
+trim_at = "."
+detect_env_vars = []
+style = 'fg:#1a1b26 bg:#7aa2f7'
+format = "[$ssh_symbol$hostname]($style)"
+disabled = false
+
+[os.symbols]
+Macos = "  "  # nf-fa-apple
+Ubuntu = "  " # nf-linux-ubuntu
+Debian = "  " # nf-linux-debian
+
+[directory]
+truncation_length = 6
+truncation_symbol = ' '                                 # nf-fa-folder_open
+truncate_to_repo = false
+home_symbol = ' ~'                                      # nf-costum-home
+style = 'fg:#7aa2f7 bg:#1a1b26'
+read_only = ' 󰌾 '                                        # nf-md-lock
+read_only_style = 'fg:#f7768e bg:#1a1b26'
+format = '[$path]($style)[$read_only]($read_only_style)'
+
+[git_branch]
+symbol = '  ' # nf-fa-github_alt, nf-fa-code_fork
+#truncation_length = 4
+truncation_symbol = ''
+style = 'fg:#7aa2f7 bg:#1a1b26'
+format = '[  $symbol$branch(:$remote_branch)]($style)' # nf-pl-left_soft_divider
+
+[git_status]
+style = 'fg:#e0af68 bg:#1a1b26'
+conflicted = '='
+ahead = '⇡${count}'
+behind = '⇣${count}'
+diverged = '⇕'
+up_to_date = '✓'
+untracked = '?'
+stashed = '\$'
+modified = '!${count}'
+renamed = '»'
+deleted = '✘'
+format = '([\[$all_status$ahead_behind\]]($style))'
+
+[git_metrics]
+added_style = 'fg:#9ece6a bg:#1a1b26'
+deleted_style = 'fg:#9ece6a bg:#1a1b26'
+format = '[+$added/-$deleted]($deleted_style)'
+disabled = false
+
+[fill]
+symbol = '─'
+style = '#1a1b26'
+
+[conda]
+symbol = ' '                              # nf-dev-python
+style = 'fg:#9ece6a bg:#1a1b26'
+format = '[ $symbol$environment ]($style)'
+ignore_base = false
+
+[python]
+symbol = ' '                                                               # nf-dev-python
+format = '[ ${symbol}${pyenv_prefix}(${version})(\($virtualenv\))]($style)'
+pyenv_version_name = false
+style = 'fg:#1a1b26 bg:#9ece6a'
+
+
+[direnv]
+format = '[$symbol$allowed]($style) '
+style = "bold fg:#1a1b26 bg:#cba6f7"
+disabled = true
+
+[character]
+success_symbol = '[❯](bold #9ece6a)'
+error_symbol = '[❯](bold red)'
+
+[cmd_duration]
+min_time = 1
+style = 'fg:#e0af68'
+format = "[   $duration]($style)" # nf-pl-right_soft_divider, nf-mdi-clock
+
+[lua]
+symbol = ""                           # nf-seti-lua
+format = '[  $symbol $version](blue)' # nf-pl-right_soft_divider
+
+[rust]
+symbol = ""                          # nf-dev-rust
+format = '[  $symbol $version](red)' # nf-pl-right_soft_divider
+
+[time]
+disabled = false
+style = 'fg:#73daca'
+format = '[   $time]($style)' # nf-pl-right_soft_divider, nf-fa-clock_o
+time_format = '%T'
+utc_time_offset = '+9'

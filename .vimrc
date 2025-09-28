@@ -28,6 +28,9 @@ endif
 " Required:
 call plug#begin(expand('~/.vim/plugged'))
 
+" Default highlight is better than polyglot
+let g:polyglot_disabled = ['graphql']
+
 "*****************************************************************************
 "" Plug install packages
 "*****************************************************************************
@@ -204,7 +207,7 @@ nmap <space>eb <Cmd>CocCommand explorer --preset buffer<CR>
 nmap <space>el <Cmd>CocList explPresets<CR>
 
 
-let g:coc_global_extensions = ['coc-json', 'coc-tsserver', 'coc-rust-analyzer', 'coc-highlight', 'coc-pairs', 'coc-toml', 'coc-pydocstring', 'coc-lists', 'coc-yaml', 'coc-vimlsp', 'coc-docker', 'coc-html', 'coc-markdownlint', 'coc-sh', 'coc-explorer', 'coc-css', '@yaegassy/coc-ruff', 'coc-jedi', 'coc-biome', 'coc-xml', 'coc-lua', 'coc-prettier', 'coc-eslint', '@yaegassy/coc-mypy', 'coc-snippets', 'coc-java', 'coc-tabnine', 'coc-solargraph']
+let g:coc_global_extensions = ['coc-json', 'coc-tsserver', 'coc-rust-analyzer', 'coc-highlight', 'coc-pairs', 'coc-toml', 'coc-pydocstring', 'coc-lists', 'coc-yaml', 'coc-vimlsp', 'coc-docker', 'coc-html', 'coc-markdownlint', 'coc-sh', 'coc-explorer', 'coc-css', '@yaegassy/coc-ruff', 'coc-jedi', 'coc-biome', 'coc-xml', 'coc-lua','@yaegassy/coc-mypy', 'coc-snippets', 'coc-tabnine', 'coc-solargraph', 'coc-prettier']
 
 let g:coc_enable_completion_detail = 1
 let g:coc_default_semantic_highlight_groups = 1
@@ -215,7 +218,7 @@ let g:openbrowser_browser_commands = [ {'name': 'google-chrome-stable',  'args':
 
 " let g:ale_linters = {'javascript': ['prettier', 'eslint', 'biome'], 'typescript': ['prettier', 'eslint', 'tslint', 'tsserver', 'typecheck', 'biome'], 'python': ['mypy', 'ruff'], 'rust': ['analyzer', 'clippy'], 'java': ['javac']}
 " let g:ale_fixers = {'javascript': ['prettier', 'remove_trailing_lines', 'trim_whitespace'], 'typescript': ['prettier', 'remove_trailing_lines', 'trim_whitespace'], 'python': ['black', 'ruff', 'remove_trailing_lines', 'trim_whitespace'], 'rust': ['rustfmt', 'remove_trailing_lines', 'trim_whitespace']}
-let g:ale_fixers = {'javascript': ['trim_whitespace', 'remove_trailing_lines', 'trim_whitespace', 'prettier'], 'typescript': ['remove_trailing_lines', 'trim_whitespace', 'prettier'], 'python': ['ruff','remove_trailing_lines', 'trim_whitespace'], 'rust': ['remove_trailing_lines', 'trim_whitespace']}
+let g:ale_fixers = {'javascript': ['trim_whitespace', 'remove_trailing_lines', 'trim_whitespace', 'prettier', 'biome'], 'typescript': ['remove_trailing_lines', 'trim_whitespace', 'prettier', 'biome'], 'python': ['ruff','remove_trailing_lines', 'trim_whitespace'], 'rust': ['remove_trailing_lines', 'trim_whitespace'], 'typescriptreact': ['prettier', 'biome']}
 "let g:ale_python_ruff_use_global = 1
 let g:ale_fix_on_save = 1
 let g:ale_enabled = 0
@@ -831,8 +834,6 @@ let g:syntastic_python_checkers=['python', 'flake8']
 let g:airline#extensions#virtualenv#enabled = 1
 
 " Syntax highlight
-" Default highlight is better than polyglot
-"let g:polyglot_disabled = ['python']
 let python_highlight_all = 1
 
 
@@ -1145,3 +1146,4 @@ inoremap <special> <expr> <Esc>[200~ XTermPasteBegin()
 autocmd VimEnter,InsertEnter * set pastetoggle=<F2>
 autocmd TextYankPost * if v:event.operator is 'y' | execute 'normal! gg=G' | endif
 
+autocmd FileType json setlocal tabstop=2 shiftwidth=2 expandtab
