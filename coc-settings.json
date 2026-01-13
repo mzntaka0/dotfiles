@@ -2,12 +2,14 @@
   "suggest.noselect": true,
   "coc.preferences.formatOnType": true,
   "coc.preferences.formatOnSave": true,
-  "python.formatting.provider": "ruff",
+  "ruff.enable": true,
   "ruff.nativeServer": true,
   "ruff.autoFixOnSave": true,
-  "mypy-type-checker.enable": false,
+  "ruff.fixAll": true,
+  "ty.enable": true,
   "prettier.useTabs": false,
   "prettier.tabWidth": 2,
   "biome.requireConfiguration": true,
-  "biome.enable": true
+  "biome.enable": true,
+  "rust-analyzer.enable": true,
 }

@@ -90,6 +90,11 @@ Plug 'itchyny/lightline.vim'
 Plug 'liuchengxu/vista.vim'
 Plug 'NoahTheDuke/vim-just'
 Plug 'github/copilot.vim'
+Plug 'pappasam/coc-jedi', { 'do': 'yarn install --frozen-lockfile && yarn build', 'branch': 'main' }
+Plug 'yaegassy/coc-ruff', {'do': 'yarn install --frozen-lockfile'}
+Plug 'yaegassy/coc-black-formatter', {'do': 'yarn install --frozen-lockfile'}
+Plug 'yaegassy/coc-ty', {'do': 'yarn install --frozen-lockfile'}
+Plug 'Julian/lean.nvim'
 
 " Deps
 Plug 'stevearc/dressing.nvim'
@@ -111,6 +116,9 @@ function! NearestMethodOrFunction() abort
 endfunction
 
 set statusline+=%{NearestMethodOrFunction()}
+
+autocmd FileType netrw let b:coc_enabled = 0
+autocmd FileType netrw let b:copilot_enabled = v:false
 
 " By default vista.vim never run if you don't call it explicitly.
 "
@@ -207,7 +215,7 @@ nmap <space>eb <Cmd>CocCommand explorer --preset buffer<CR>
 nmap <space>el <Cmd>CocList explPresets<CR>
 
 
-let g:coc_global_extensions = ['coc-json', 'coc-tsserver', 'coc-rust-analyzer', 'coc-highlight', 'coc-pairs', 'coc-toml', 'coc-pydocstring', 'coc-lists', 'coc-yaml', 'coc-vimlsp', 'coc-docker', 'coc-html', 'coc-markdownlint', 'coc-sh', 'coc-explorer', 'coc-css', '@yaegassy/coc-ruff', 'coc-jedi', 'coc-biome', 'coc-xml', 'coc-lua','@yaegassy/coc-mypy', 'coc-snippets', 'coc-tabnine', 'coc-solargraph', 'coc-prettier']
+let g:coc_global_extensions = ['coc-json', 'coc-tsserver', 'coc-rust-analyzer', 'coc-highlight', 'coc-pairs', 'coc-toml', 'coc-pydocstring', 'coc-lists', 'coc-yaml', 'coc-vimlsp', 'coc-docker', 'coc-html', 'coc-markdownlint', 'coc-sh', 'coc-explorer', 'coc-css', '@yaegassy/coc-ruff', 'coc-biome', 'coc-xml', 'coc-lua', 'coc-snippets', 'coc-tabnine', 'coc-solargraph', 'coc-prettier', '@yaegassy/coc-black-formatter', '@yaegassy/coc-ty', 'coc-jedi', 'coc-diagnostic']
 
 let g:coc_enable_completion_detail = 1
 let g:coc_default_semantic_highlight_groups = 1
@@ -218,17 +226,17 @@ let g:openbrowser_browser_commands = [ {'name': 'google-chrome-stable',  'args':
 
 " let g:ale_linters = {'javascript': ['prettier', 'eslint', 'biome'], 'typescript': ['prettier', 'eslint', 'tslint', 'tsserver', 'typecheck', 'biome'], 'python': ['mypy', 'ruff'], 'rust': ['analyzer', 'clippy'], 'java': ['javac']}
 " let g:ale_fixers = {'javascript': ['prettier', 'remove_trailing_lines', 'trim_whitespace'], 'typescript': ['prettier', 'remove_trailing_lines', 'trim_whitespace'], 'python': ['black', 'ruff', 'remove_trailing_lines', 'trim_whitespace'], 'rust': ['rustfmt', 'remove_trailing_lines', 'trim_whitespace']}
-let g:ale_fixers = {'javascript': ['trim_whitespace', 'remove_trailing_lines', 'trim_whitespace', 'prettier', 'biome'], 'typescript': ['remove_trailing_lines', 'trim_whitespace', 'prettier', 'biome'], 'python': ['ruff','remove_trailing_lines', 'trim_whitespace'], 'rust': ['remove_trailing_lines', 'trim_whitespace'], 'typescriptreact': ['prettier', 'biome']}
+let g:ale_fixers = {'javascript': ['trim_whitespace', 'remove_trailing_lines', 'trim_whitespace', 'prettier', 'biome'], 'typescript': ['remove_trailing_lines', 'trim_whitespace', 'prettier', 'biome'], 'python': ['ruff','remove_trailing_lines', 'trim_whitespace', 'black'], 'rust': ['remove_trailing_lines', 'trim_whitespace'], 'typescriptreact': ['prettier', 'biome']}
 "let g:ale_python_ruff_use_global = 1
 let g:ale_fix_on_save = 1
 let g:ale_enabled = 0
-" let g:ale_completion_enabled = 0
+"let g:ale_completion_enabled = 0
 " let g:ale_floating_preview = 1
 " let g:ale_sign_column_always = 0
 " 
 " let g:ale_python_mypy_options = '--ignore-missing-imports'
 " 
-" let g:rustfmt_autosave = 1
+let g:rustfmt_autosave = 1
 " let g:ale_rust_cargo_use_clippy = executable('cargo-clippy')
 
 " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable

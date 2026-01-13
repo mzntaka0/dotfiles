@@ -75,7 +75,6 @@ alias history='history -E'
 alias la='ls -a'
 alias ll='ls -l'
 alias ls='ls -F --color'
-alias mkdir='sudo mkdir'
 alias ngrokurl="curl --silent http://127.0.0.1:4040/api/tunnels | jq '.tunnels[0].public_url' | sed 's/\"//g'"
 alias reload='exec $SHELL -l'
 alias tig='sudo tig'
@@ -98,6 +97,7 @@ export LC_ALL=en_US.utf-8
 export LC_ALL
 export PATH="$HOME/.amplify/bin:$PATH"
 export PATH="$HOME/.tfenv/bin:$PATH"
+export PATH="$HOME/.elan/bin:$PATH"
 export PATH="/usr/local/opt/sqlite/bin:$PATH"
 export PATH=${PYENV_ROOT}/bin:$PATH
 export PIPENV_VENV_IN_PROJECT=true
