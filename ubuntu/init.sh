@@ -10,7 +10,7 @@ echo '#############################'
 apt install -y ibus-mozc
 killall ibus-daemon
 ibus-daemon -d -x &
-echo 'you can setup japanese available, refering https://qiita.com/pg_naoyuki/items/238f6e5060fb838827f6' 
+echo 'you can setup japanese available, refering https://qiita.com/pg_naoyuki/items/238f6e5060fb838827f6'
 
 echo '#############################'
 echo '# Enable Quick Look'
